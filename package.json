@@ -1,0 +1,11 @@
+{
+	"name": "match-game",
+	"version": "1.0.0",
+	"description": "match game using react",
+	"main": "/client/src/index.js",
+	"scripts": {
+		"test": "cd client && npm run test"
+	},
+	"author": "Tom Chestnut",
+	"license": "MIT"
+}
