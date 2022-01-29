@@ -7,5 +7,8 @@
 		"test": "cd client && npm run test"
 	},
 	"author": "Tom Chestnut",
-	"license": "MIT"
+	"license": "MIT",
+	"devDependencies": {
+		"eslint": "^8.8.0"
+	}
 }
