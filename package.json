@@ -4,6 +4,8 @@
 	"description": "match game using react",
 	"main": "/client/src/index.js",
 	"scripts": {
+		"start": "cd client && npm start",
+		"format": "npx prettier --write client/src && npx eslint client/src",
 		"test": "cd client && npm run test"
 	},
 	"author": "Tom Chestnut",
