@@ -1,0 +1,18 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 550px;
+	width: 75vw;
+	border: 1px solid black;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+.tiles {
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(auto-fit, 150px);
+	gap: 10px;
+	margin: 10px 0;
+}
