@@ -4,6 +4,7 @@
 	justify-content: center;
 	min-height: 550px;
 	width: 75vw;
+	max-width: 750px;
 	border: 1px solid black;
 	border-radius: 3px;
 	margin: 10px;

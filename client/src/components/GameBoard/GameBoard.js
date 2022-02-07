@@ -11,6 +11,8 @@ const TEMP_CATEGORY = 'dog';
 
 const GameBoard = () => {
 	const [images, setImages] = useState([]);
+	const [selectedTiles, setSelectedTiles] = useState([]);
+	console.log('selectedTiles:', selectedTiles);
 
 	const handleImageRequest = async () => {
 		const data = await getImages(TEMP_CATEGORY, TILE_COUNT / 2);
@@ -27,9 +29,10 @@ const GameBoard = () => {
 				{images.map(({ urls, id, alt_description, description }, i) => (
 					<Tile
 						key={`${id}-${i}`}
-						id={id}
+						id={`${id}-${i}`}
 						url={urls.regular}
 						description={alt_description || description}
+						setSelectedTiles={setSelectedTiles}
 					/>
 				))}
 			</div>

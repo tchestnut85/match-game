@@ -1,5 +1,19 @@
-.content img {
+.content {
+	cursor: pointer;
+}
+
+.content img,
+.content i {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 150px;
 	width: 150px;
+	border: 2px solid indigo;
 	border-radius: 6px;
+}
+
+.content i {
+	background: #8e6fa5;
+	color: indigo;
 }
