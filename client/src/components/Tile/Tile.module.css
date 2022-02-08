@@ -2,8 +2,8 @@
 	cursor: pointer;
 }
 
-.content img,
-.content i {
+.content > img,
+.content > i {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -13,7 +13,31 @@
 	border-radius: 6px;
 }
 
-.content i {
+.content > i {
 	background: #8e6fa5;
 	color: indigo;
+}
+
+.isDisabled {
+	pointer-events: none;
+	user-select: none;
+}
+
+.content.isMatched > img {
+	border: 5px solid rgb(11, 207, 11);
+	border-radius: 50%;
+	cursor: not-allowed;
+	pointer-events: all;
+	animation: image-match 0.2s linear 0s 1 normal;
+}
+
+@keyframes image-match {
+	from {
+		border: 2px solid indigo;
+		border-radius: 6px;
+	}
+	to {
+		border: 5px solid rgb(11, 207, 11);
+		border-radius: 50%;
+	}
 }
