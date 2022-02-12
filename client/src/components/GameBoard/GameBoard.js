@@ -3,11 +3,10 @@ import Tile from '../Tile/Tile';
 
 import { getImages } from '../../api/unsplash';
 import { shuffleArray } from '../../utils/shuffle';
+import { getImageID } from '../../utils/getImageID';
 import styles from './GameBoard.module.css';
 
 const initialSelectedTiles = []; // TODO - change to an object {tileA: '', tileB: ''}
-
-const getImageId = id => id.split('-')[0];
 
 // TODO - get tile count and category from user input
 const TILE_COUNT = 12;
@@ -31,7 +30,6 @@ const GameBoard = () => {
 	};
 
 	const handeDidNotMatch = () => {
-		// TODO - add styling or a message to show that it was not a match
 		setTimeout(() => {
 			setSelectedTiles(initialSelectedTiles);
 		}, 2000);
@@ -45,7 +43,7 @@ const GameBoard = () => {
 
 	const handleCheckMatch = () => {
 		const [tileA, tileB] = selectedTiles;
-		const isMatch = getImageId(tileA) === getImageId(tileB);
+		const isMatch = getImageID(tileA) === getImageID(tileB);
 		return isMatch ? handleDidMatch([tileA, tileB]) : handeDidNotMatch();
 	};
 

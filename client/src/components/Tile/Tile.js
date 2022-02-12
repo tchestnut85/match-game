@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import { getImageID } from '../../utils/getImageID';
+
 import styles from './Tile.module.css';
 
 const Tile = ({
@@ -42,11 +44,17 @@ const Tile = ({
 		selectedTiles.includes(id) ||
 		(selectedTiles.length === 2 && !selectedTiles.includes(id));
 
+	const isNotMatched =
+		selectedTiles.length === 2 &&
+		selectedTiles.includes(id) &&
+		getImageID(selectedTiles[0]) !== getImageID(selectedTiles[1]);
+
+	const tileClassNames = `${styles.content} ${
+		isDisabled ? styles.isDisabled : null
+	} ${isNotMatched ? styles.isNotMatched : null}`;
+
 	return (
-		<div
-			className={`${styles.content} ${isDisabled ? styles.isDisabled : null}`}
-			onClick={handleClick}
-		>
+		<div className={tileClassNames} onClick={handleClick}>
 			{isHidden ? (
 				<i id={id} className="fas fa-question-circle fa-7x" />
 			) : (

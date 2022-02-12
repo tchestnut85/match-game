@@ -23,12 +23,18 @@
 	user-select: none;
 }
 
-.content.isMatched > img {
-	border: 5px solid rgb(11, 207, 11);
+.isMatched > img {
+	outline: 5px solid rgb(11, 207, 11);
+	border: none;
 	border-radius: 50%;
 	cursor: not-allowed;
 	pointer-events: all;
 	animation: image-match 0.2s linear 0s 1 normal;
+}
+
+.isNotMatched > img {
+	outline: 5px solid red;
+	border: none;
 }
 
 @keyframes image-match {
