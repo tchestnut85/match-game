@@ -1,0 +1,32 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid rgb(74, 0, 128, 0.2);
+}
+
+.container * {
+	text-decoration: none;
+	color: indigo;
+}
+
+.container * :visited,
+.container * :active {
+	color: indigo;
+}
+
+.links {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	list-style: none;
+}
+
+.isActive {
+	background: #8e6fa5;
+	padding: 10px;
+	border-radius: 6px;
+}

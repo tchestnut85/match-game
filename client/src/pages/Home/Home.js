@@ -1,13 +1,15 @@
 import React from 'react';
-import styles from './Home.module.css';
+import { Outlet } from 'react-router-dom';
 
 import GameBoard from '../../components/GameBoard/GameBoard';
+
+import styles from './Home.module.css';
 
 function Home() {
 	return (
 		<main className={styles.container}>
-			<h1>Match Game</h1>
 			<GameBoard />
+			<Outlet />
 		</main>
 	);
 }
