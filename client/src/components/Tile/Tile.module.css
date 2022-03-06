@@ -9,7 +9,7 @@
 	align-items: center;
 	height: 150px;
 	width: 150px;
-	border: 2px solid indigo;
+	border: 3px solid indigo;
 	border-radius: 6px;
 }
 
@@ -24,8 +24,7 @@
 }
 
 .isMatched > img {
-	outline: 5px solid rgb(11, 207, 11);
-	border: none;
+	border: 3px solid rgb(11, 207, 11);
 	border-radius: 50%;
 	cursor: not-allowed;
 	pointer-events: all;
@@ -33,17 +32,32 @@
 }
 
 .isNotMatched > img {
-	outline: 5px solid red;
-	border: none;
+	border: 3px solid red;
+	animation: shake 0.1s linear 0s 1 normal;
 }
 
 @keyframes image-match {
 	from {
-		border: 2px solid indigo;
+		border: 3px solid indigo;
 		border-radius: 6px;
 	}
 	to {
-		border: 5px solid rgb(11, 207, 11);
+		border: 3px solid rgb(11, 207, 11);
 		border-radius: 50%;
+	}
+}
+
+@keyframes shake {
+	from {
+		transform: rotate(0.01turn);
+	}
+	50% {
+		transform: rotate(0turn);
+	}
+	75% {
+		transform: rotate(-0.01turn);
+	}
+	to {
+		transform: rotate(0turn);
 	}
 }

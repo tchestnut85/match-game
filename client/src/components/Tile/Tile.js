@@ -50,8 +50,8 @@ const Tile = ({
 		getImageID(selectedTiles[0]) !== getImageID(selectedTiles[1]);
 
 	const tileClassNames = `${styles.content} ${
-		isDisabled ? styles.isDisabled : null
-	} ${isNotMatched ? styles.isNotMatched : null}`;
+		isDisabled ? styles.isDisabled : ''
+	} ${isNotMatched ? styles.isNotMatched : ''}`;
 
 	return (
 		<div className={tileClassNames} onClick={handleClick}>
