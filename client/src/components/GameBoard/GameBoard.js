@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer } from 'react';
-import Tile from '../Tile/Tile';
 
 import { getImages } from '../../api/unsplash';
 import { shuffleArray } from '../../utils/shuffle';
 import { getImageID } from '../../utils/getImageID';
-import styles from './GameBoard.module.css';
+
+import Tile from '../Tile/Tile';
+import styles from './GameBoard.module.scss';
 
 // TODO - get tile count and category from user input
 const TILE_COUNT = 12;
@@ -73,10 +74,8 @@ const GameBoard = () => {
 		}, 2000);
 	};
 
-	const checkGameComplete = ids => {
-		if (ids.length === TILE_COUNT) {
-			dispatch({ type: SET_GAME_COMPLETE, payload: true });
-		}
+	const checkGameComplete = () => {
+		dispatch({ type: SET_GAME_COMPLETE, payload: true });
 	};
 
 	const handleDidMatch = ([tileA, tileB]) => {
@@ -106,7 +105,9 @@ const GameBoard = () => {
 	}, [selectedTiles]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
-		checkGameComplete(matchedIds);
+		if (matchedIds.length === TILE_COUNT) {
+			checkGameComplete(matchedIds);
+		}
 	}, [matchedIds]);
 
 	return (

@@ -1,3 +1,5 @@
+@import '../../sass/index.scss';
+
 .container {
 	display: flex;
 	flex-direction: column;
@@ -5,7 +7,7 @@
 	min-height: 550px;
 	width: 75vw;
 	max-width: 750px;
-	border: 1px solid black;
+	border: $border-default;
 	border-radius: 3px;
 	margin: 10px;
 }

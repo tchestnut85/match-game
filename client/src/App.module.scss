@@ -1,3 +1,5 @@
+@import './sass/index';
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-	background-color: aqua;
+	background-color: $app-background;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
 		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

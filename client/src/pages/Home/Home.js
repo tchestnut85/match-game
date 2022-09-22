@@ -1,9 +1,8 @@
 import React from 'react';
-import styles from './Home.module.css';
 
 import GameBoard from 'components/GameBoard/GameBoard';
-
 import { APP_NAME } from 'constants';
+import styles from './Home.module.scss';
 
 function Home() {
 	return (

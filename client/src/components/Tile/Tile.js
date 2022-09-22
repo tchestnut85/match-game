@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getImageID } from 'utils/getImageID';
 
-import styles from './Tile.module.css';
+import styles from './Tile.module.scss';
 
 const Tile = ({
 	url = '',
