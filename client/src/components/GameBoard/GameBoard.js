@@ -14,24 +14,33 @@ const TEMP_CATEGORY = 'pugs';
 const ACTION_TYPES = {
 	SET_IMAGES: 'SET_IMAGES',
 	SET_SELECTED_TILES: 'SET_SELECTED_TILES',
-	SET_MATCHED_IDS: 'SET_MATCHED_IDS',
+	SET_GAME_COMPLETE: 'SET_GAME_COMPLETE',
+	HANDLE_MATCH: 'HANDLE_MATCH',
 };
-const { SET_IMAGES, SET_MATCHED_IDS, SET_SELECTED_TILES } = ACTION_TYPES;
+const { SET_IMAGES, SET_SELECTED_TILES, SET_GAME_COMPLETE, HANDLE_MATCH } =
+	ACTION_TYPES;
 
 const initialState = {
 	images: [],
 	selectedTiles: [],
 	matchedIds: [],
+	isGameComplete: false,
 };
 
-function reducer(state, { type, payload }) {
+function reducer(state = initialState, { type, payload }) {
 	switch (type) {
 		case SET_IMAGES:
 			return { ...state, images: payload };
 		case SET_SELECTED_TILES:
 			return { ...state, selectedTiles: payload };
-		case SET_MATCHED_IDS:
-			return { ...state, matchedIds: payload };
+		case SET_GAME_COMPLETE:
+			return { ...state, isGameComplete: payload };
+		case HANDLE_MATCH:
+			return {
+				...state,
+				matchedIds: payload.matchedIds,
+				selectedTiles: payload.selectedTiles,
+			};
 		default:
 			return state;
 	}
@@ -51,7 +60,6 @@ const GameBoard = () => {
 	};
 
 	const handleClick = id => {
-		console.log('handleClick id:', id);
 		if (selectedTiles.includes(id)) return;
 		dispatch({ type: SET_SELECTED_TILES, payload: [...selectedTiles, id] });
 	};
@@ -65,12 +73,19 @@ const GameBoard = () => {
 		}, 2000);
 	};
 
+	const checkGameComplete = ids => {
+		if (ids.length === TILE_COUNT) {
+			dispatch({ type: SET_GAME_COMPLETE, payload: true });
+		}
+	};
+
 	const handleDidMatch = ([tileA, tileB]) => {
-		// TODO - add logic to check if all of the pictures were matched
-		dispatch({ type: SET_MATCHED_IDS, payload: [...matchedIds, tileA, tileB] });
 		dispatch({
-			type: SET_SELECTED_TILES,
-			payload: initialState.selectedTiles,
+			type: HANDLE_MATCH,
+			payload: {
+				matchedIds: [...matchedIds, tileA, tileB],
+				selectedTiles: initialState.selectedTiles,
+			},
 		});
 	};
 
@@ -89,6 +104,10 @@ const GameBoard = () => {
 			handleCheckMatch();
 		}
 	}, [selectedTiles]); // eslint-disable-line react-hooks/exhaustive-deps
+
+	useEffect(() => {
+		checkGameComplete(matchedIds);
+	}, [matchedIds]);
 
 	return (
 		<div className={styles.container}>
