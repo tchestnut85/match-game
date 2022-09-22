@@ -11,13 +11,13 @@
 	align-items: center;
 	height: 150px;
 	width: 150px;
-	border: 2px solid $tile-foreground;
+	border: 2px solid $color-tertiary;
 	border-radius: 6px;
 }
 
 .content > i {
-	background: $tile-background;
-	color: $tile-foreground;
+	background: $color-secondary;
+	color: $color-tertiary;
 }
 
 .isDisabled {
@@ -26,7 +26,7 @@
 }
 
 .isMatched > img {
-	outline: 5px solid $tile-border-success;
+	outline: 5px solid $color-border-success;
 	border: none;
 	border-radius: 50%;
 	cursor: not-allowed;
@@ -35,17 +35,17 @@
 }
 
 .isNotMatched > img {
-	outline: 5px solid $tile-border-danger;
+	outline: 5px solid $color-border-danger;
 	border: none;
 }
 
 @keyframes image-match {
 	from {
-		border: 2px solid $tile-foreground;
+		border: 2px solid $color-tertiary;
 		border-radius: 6px;
 	}
 	to {
-		border: 5px solid $tile-border-success;
+		border: 5px solid $color-border-success;
 		border-radius: 50%;
 	}
 }

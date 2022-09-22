@@ -1,13 +1,11 @@
-import React from 'react';
-
+import Header from 'components/Header/Header';
 import GameBoard from 'components/GameBoard/GameBoard';
-import { APP_NAME } from 'constants';
 import styles from './Home.module.scss';
 
 function Home() {
 	return (
 		<main className={styles.container}>
-			<h1>{APP_NAME}</h1>
+			<Header />
 			<GameBoard />
 		</main>
 	);

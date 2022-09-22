@@ -1,0 +1,23 @@
+@import '../../sass/index';
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 12px 24px;
+	width: 100%;
+	background: $color-secondary;
+
+	h1 {
+		color: $color-primary;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.container {
+		flex-direction: column;
+		justify-content: center;
+		gap: 24px;
+	}
+}
