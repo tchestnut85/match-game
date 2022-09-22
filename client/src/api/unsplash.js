@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.unsplash.com';
-const PHOTOS_ENDPOINT = '/photos/random';
+import { UNSPLASH_API } from 'constants';
+
+const { BASE_URL, ENDPOINT } = UNSPLASH_API;
 
 const unsplashRequest = axios.create({
 	baseURL: BASE_URL,
@@ -12,7 +13,7 @@ const unsplashRequest = axios.create({
 });
 
 export async function getImages(query, count) {
-	const res = await unsplashRequest.get(PHOTOS_ENDPOINT, {
+	const res = await unsplashRequest.get(ENDPOINT, {
 		params: { query, count },
 	});
 	return res.data;
