@@ -24,7 +24,7 @@ const Tile = ({
 	}, [selectedTiles, id, isHidden]);
 
 	const handleClick = e => {
-		const id = e.target.id;
+		const { id } = e.target;
 		if (isMatched) return;
 		setIsHidden(false);
 		onClick(id);

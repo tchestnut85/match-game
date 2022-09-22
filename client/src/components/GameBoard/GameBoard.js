@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import Tile from '../Tile/Tile';
 
 import { getImages } from '../../api/unsplash';
@@ -6,39 +6,72 @@ import { shuffleArray } from '../../utils/shuffle';
 import { getImageID } from '../../utils/getImageID';
 import styles from './GameBoard.module.css';
 
-const initialSelectedTiles = []; // TODO - change to an object {tileA: '', tileB: ''}
-
 // TODO - get tile count and category from user input
 const TILE_COUNT = 12;
 const REQUEST_COUNT = TILE_COUNT / 2;
 const TEMP_CATEGORY = 'pugs';
 
+const ACTION_TYPES = {
+	SET_IMAGES: 'SET_IMAGES',
+	SET_SELECTED_TILES: 'SET_SELECTED_TILES',
+	SET_MATCHED_IDS: 'SET_MATCHED_IDS',
+};
+const { SET_IMAGES, SET_MATCHED_IDS, SET_SELECTED_TILES } = ACTION_TYPES;
+
+const initialState = {
+	images: [],
+	selectedTiles: [],
+	matchedIds: [],
+};
+
+function reducer(state, { type, payload }) {
+	switch (type) {
+		case SET_IMAGES:
+			return { ...state, images: payload };
+		case SET_SELECTED_TILES:
+			return { ...state, selectedTiles: payload };
+		case SET_MATCHED_IDS:
+			return { ...state, matchedIds: payload };
+		default:
+			return state;
+	}
+}
+
 const GameBoard = () => {
-	const [images, setImages] = useState([]);
-	const [selectedTiles, setSelectedTiles] = useState([]);
-	const [matchedIds, setMatchedIds] = useState([]);
+	const [{ images, selectedTiles, matchedIds }, dispatch] = useReducer(
+		reducer,
+		initialState
+	);
+
 	const checkIsMatched = id => matchedIds.includes(id);
 
 	const handleImageRequest = async () => {
 		const data = await getImages(TEMP_CATEGORY, REQUEST_COUNT);
-		setImages(shuffleArray([...data, ...data]));
+		dispatch({ type: SET_IMAGES, payload: shuffleArray([...data, ...data]) });
 	};
 
 	const handleClick = id => {
+		console.log('handleClick id:', id);
 		if (selectedTiles.includes(id)) return;
-		setSelectedTiles([...selectedTiles, id]);
+		dispatch({ type: SET_SELECTED_TILES, payload: [...selectedTiles, id] });
 	};
 
 	const handeDidNotMatch = () => {
 		setTimeout(() => {
-			setSelectedTiles(initialSelectedTiles);
+			dispatch({
+				type: SET_SELECTED_TILES,
+				payload: initialState.selectedTiles,
+			});
 		}, 2000);
 	};
 
 	const handleDidMatch = ([tileA, tileB]) => {
 		// TODO - add logic to check if all of the pictures were matched
-		setMatchedIds([...matchedIds, tileA, tileB]);
-		setSelectedTiles(initialSelectedTiles);
+		dispatch({ type: SET_MATCHED_IDS, payload: [...matchedIds, tileA, tileB] });
+		dispatch({
+			type: SET_SELECTED_TILES,
+			payload: initialState.selectedTiles,
+		});
 	};
 
 	const handleCheckMatch = () => {
