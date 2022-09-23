@@ -1,0 +1,8 @@
+@mixin border-default($color: #000000, $radius: 3px) {
+	border: 1px solid $color;
+	border-radius: $radius;
+
+	@if ($color == none) {
+		border: none;
+	}
+}

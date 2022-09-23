@@ -4,3 +4,14 @@ export const UNSPLASH_API = {
 	BASE_URL: 'https://api.unsplash.com',
 	ENDPOINT: '/photos/random',
 };
+
+export const MESSAGES = {
+	modals: {
+		gameComplete: {
+			primary: 'Nice job matching all the images!',
+			secondary: 'Do you want to try again?',
+			yes: 'Yeah!',
+			no: 'Nope!',
+		},
+	},
+};

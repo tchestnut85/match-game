@@ -10,7 +10,7 @@ const Navbar = () => {
 	// TODO - add onClick for Reset button to reset the gameboard state
 	// will need context or redux for this
 
-	const handleReset = () => console.log('Reset');
+	const handleReset = () => {};
 	// const handleViewScores = () => console.log('View Scores');
 
 	return (

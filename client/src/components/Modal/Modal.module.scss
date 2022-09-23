@@ -1,0 +1,36 @@
+@import '../../sass/index';
+@import '../../sass/mixins';
+
+$width: 500px;
+$height: 200px;
+
+// dialog element ::backdrop pseudo-element
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#usage_notes
+
+.container {
+	@include border-default();
+
+	position: absolute;
+	width: $width;
+	height: $height;
+	text-align: center;
+	background: $color-secondary;
+	color: $color-primary;
+
+	&::backdrop {
+		background: rgba(100, 150, 150, 0.75);
+	}
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 100%;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}

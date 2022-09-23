@@ -1,25 +1,41 @@
 import React, { useEffect, useReducer } from 'react';
 
+import Tile from 'components/Tile/Tile';
+import Modal from 'components/Modal/Modal';
+import styles from './GameBoard.module.scss';
+
 import { getImages } from '../../api/unsplash';
 import { shuffleArray } from '../../utils/shuffle';
 import { getImageID } from '../../utils/getImageID';
-
-import Tile from '../Tile/Tile';
-import styles from './GameBoard.module.scss';
+import { MESSAGES } from 'constants';
 
 // TODO - get tile count and category from user input
 const TILE_COUNT = 12;
 const REQUEST_COUNT = TILE_COUNT / 2;
 const TEMP_CATEGORY = 'pugs';
 
+const {
+	modals: { gameComplete: MODAL_MESSAGES },
+} = MESSAGES;
+const MODAL_BUTTONS = {
+	yes: MODAL_MESSAGES.yes,
+	no: MODAL_MESSAGES.no,
+};
+
 const ACTION_TYPES = {
 	SET_IMAGES: 'SET_IMAGES',
 	SET_SELECTED_TILES: 'SET_SELECTED_TILES',
 	SET_GAME_COMPLETE: 'SET_GAME_COMPLETE',
 	HANDLE_MATCH: 'HANDLE_MATCH',
+	RESET: 'RESET',
 };
-const { SET_IMAGES, SET_SELECTED_TILES, SET_GAME_COMPLETE, HANDLE_MATCH } =
-	ACTION_TYPES;
+const {
+	SET_IMAGES,
+	SET_SELECTED_TILES,
+	SET_GAME_COMPLETE,
+	HANDLE_MATCH,
+	RESET,
+} = ACTION_TYPES;
 
 const initialState = {
 	images: [],
@@ -27,6 +43,10 @@ const initialState = {
 	matchedIds: [],
 	isGameComplete: false,
 };
+
+function initialize(state = initialState) {
+	return state;
+}
 
 function reducer(state = initialState, { type, payload }) {
 	switch (type) {
@@ -42,16 +62,16 @@ function reducer(state = initialState, { type, payload }) {
 				matchedIds: payload.matchedIds,
 				selectedTiles: payload.selectedTiles,
 			};
+		case RESET:
+			return initialize(payload);
 		default:
 			return state;
 	}
 }
 
 const GameBoard = () => {
-	const [{ images, selectedTiles, matchedIds }, dispatch] = useReducer(
-		reducer,
-		initialState
-	);
+	const [{ images, selectedTiles, matchedIds, isGameComplete }, dispatch] =
+		useReducer(reducer, initialState, initialize);
 
 	const checkIsMatched = id => matchedIds.includes(id);
 
@@ -94,6 +114,11 @@ const GameBoard = () => {
 		return isMatch ? handleDidMatch([tileA, tileB]) : handeDidNotMatch();
 	};
 
+	const handleRestartGame = () => {
+		dispatch({ type: RESET, payload: initialState });
+		handleImageRequest();
+	};
+
 	useEffect(() => {
 		handleImageRequest();
 	}, []);
@@ -113,6 +138,14 @@ const GameBoard = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.tiles}>
+				{isGameComplete && (
+					<Modal
+						isOpen={isGameComplete}
+						buttons={MODAL_BUTTONS}
+						messages={MODAL_MESSAGES}
+						onClose={{ confirm: handleRestartGame }}
+					/>
+				)}
 				{images.map(({ urls, id, alt_description, description }, i) => {
 					const uniqueId = `${id}-${i}`;
 					return (

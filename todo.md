@@ -1,3 +1,3 @@
-- [ ] add context or redux to allow resetting the game state when clicking the Reset button
+- [ ] add context or redux to allow resetting the game state when clicking the Reset button in the Navbar
 - [ ] add logic/util for saving name and scores to local storage
-- [ ] add react-router for viewing saved scores; OR just add a dialog overlay component showing the scores
+- [ ] add react-router for viewing saved scores
