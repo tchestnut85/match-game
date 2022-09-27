@@ -38,8 +38,6 @@ const Modal = ({
 	const [isModalOpen, setIsModalOpen] = useState(isOpen);
 
 	const dialogRef = useRef(null);
-	const yesButtonRef = useRef(null);
-	const noButtonRef = useRef(null);
 
 	const BUTTON_IDS = Object.keys(buttons);
 	const [CONFIRM_BTN, CANCEL_BTN] = BUTTON_IDS;
@@ -57,21 +55,6 @@ const Modal = ({
 	const handleCancel = () => handleClose(CANCEL_BTN);
 
 	useEffect(() => {
-		const yesButtonCurrent = yesButtonRef.current;
-		const noButtonCurrent = noButtonRef.current;
-
-		if (yesButtonRef.current && noButtonRef.current) {
-			yesButtonCurrent.addEventListener('click', handleConfirm);
-			noButtonCurrent.addEventListener('click', handleCancel);
-		}
-
-		return () => {
-			yesButtonCurrent.removeEventListener('click', handleConfirm);
-			noButtonCurrent.removeEventListener('click', handleCancel);
-		};
-	}, [yesButtonRef, noButtonRef]); // eslint-disable-line react-hooks/exhaustive-deps
-
-	useEffect(() => {
 		if (isModalOpen && dialogRef.current) dialogRef.current.showModal();
 	}, [isModalOpen, dialogRef]);
 
@@ -86,14 +69,17 @@ const Modal = ({
 				<h2>{messages.primary}</h2>
 				<h3>{messages.secondary}</h3>
 				<div className={styles.buttons}>
-					{BUTTON_IDS.map(key => (
-						<Button
-							key={key}
-							ref={key === CONFIRM_BTN ? yesButtonRef : noButtonRef}
-							label={buttons[key]}
-							value={key}
-						/>
-					))}
+					{BUTTON_IDS.map(key => {
+						const handler = key === CONFIRM_BTN ? handleConfirm : handleCancel;
+						return (
+							<Button
+								key={key}
+								label={buttons[key]}
+								value={key}
+								onClick={handler}
+							/>
+						);
+					})}
 				</div>
 			</form>
 		</dialog>
