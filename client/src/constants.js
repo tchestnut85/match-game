@@ -15,3 +15,8 @@ export const MESSAGES = {
 		},
 	},
 };
+
+export const LINKS = {
+	github: 'https://github.com/tchestnut85/match-game',
+	unsplash: 'https://unsplash.com/',
+};

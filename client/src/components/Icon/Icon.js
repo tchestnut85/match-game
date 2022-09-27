@@ -10,11 +10,9 @@ const Icon = ({
 	const IconComponent = name;
 
 	return (
-		<div className={className}>
-			<IconComponent color={color} size={size}>
-				{children}
-			</IconComponent>
-		</div>
+		<IconComponent color={color} size={size} className={className}>
+			{children}
+		</IconComponent>
 	);
 };
 
