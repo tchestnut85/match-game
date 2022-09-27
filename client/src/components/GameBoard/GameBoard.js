@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import shuffle from 'lodash/shuffle';
 
 import Tile from 'components/Tile/Tile';
 import Modal from 'components/Modal/Modal';
@@ -7,7 +8,6 @@ import styles from './GameBoard.module.scss';
 import { useGameContext } from '../../state/gameContext';
 import { initialState, ACTION_TYPES } from '../../state/gameReducer';
 import { getImages } from '../../api/unsplash';
-import { shuffleArray } from '../../utils/shuffle';
 import { getImageID } from '../../utils/getImageID';
 import { MESSAGES } from 'constants';
 
@@ -40,7 +40,7 @@ const GameBoard = () => {
 
 	const handleImageRequest = async () => {
 		const data = await getImages(TEMP_CATEGORY, REQUEST_COUNT);
-		dispatch({ type: SET_IMAGES, payload: shuffleArray([...data, ...data]) });
+		dispatch({ type: SET_IMAGES, payload: shuffle([...data, ...data]) });
 	};
 
 	const handleClick = id => {
