@@ -1,13 +1,18 @@
 import React from 'react';
 
 import Home from 'pages/Home/Home';
+
+import { GameProvider } from './state/gameContext';
+
 import './App.module.scss';
 
 function App() {
 	return (
-		<div>
-			<Home />
-		</div>
+		<GameProvider>
+			<div>
+				<Home />
+			</div>
+		</GameProvider>
 	);
 }
 

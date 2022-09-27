@@ -1,9 +1,11 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 
 import Tile from 'components/Tile/Tile';
 import Modal from 'components/Modal/Modal';
 import styles from './GameBoard.module.scss';
 
+import { useGameContext } from '../../state/gameContext';
+import { initialState, ACTION_TYPES } from '../../state/gameReducer';
 import { getImages } from '../../api/unsplash';
 import { shuffleArray } from '../../utils/shuffle';
 import { getImageID } from '../../utils/getImageID';
@@ -22,13 +24,6 @@ const MODAL_BUTTONS = {
 	no: MODAL_MESSAGES.no,
 };
 
-const ACTION_TYPES = {
-	SET_IMAGES: 'SET_IMAGES',
-	SET_SELECTED_TILES: 'SET_SELECTED_TILES',
-	SET_GAME_COMPLETE: 'SET_GAME_COMPLETE',
-	HANDLE_MATCH: 'HANDLE_MATCH',
-	RESET: 'RESET',
-};
 const {
 	SET_IMAGES,
 	SET_SELECTED_TILES,
@@ -37,41 +32,9 @@ const {
 	RESET,
 } = ACTION_TYPES;
 
-const initialState = {
-	images: [],
-	selectedTiles: [],
-	matchedIds: [],
-	isGameComplete: false,
-};
-
-function initialize(state = initialState) {
-	return state;
-}
-
-function reducer(state = initialState, { type, payload }) {
-	switch (type) {
-		case SET_IMAGES:
-			return { ...state, images: payload };
-		case SET_SELECTED_TILES:
-			return { ...state, selectedTiles: payload };
-		case SET_GAME_COMPLETE:
-			return { ...state, isGameComplete: payload };
-		case HANDLE_MATCH:
-			return {
-				...state,
-				matchedIds: payload.matchedIds,
-				selectedTiles: payload.selectedTiles,
-			};
-		case RESET:
-			return initialize(payload);
-		default:
-			return state;
-	}
-}
-
 const GameBoard = () => {
 	const [{ images, selectedTiles, matchedIds, isGameComplete }, dispatch] =
-		useReducer(reducer, initialState, initialize);
+		useGameContext();
 
 	const checkIsMatched = id => matchedIds.includes(id);
 
