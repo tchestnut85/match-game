@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 
 const ACTION_TYPES = {
+	START_GAME: 'START_GAME',
 	SET_IMAGES: 'SET_IMAGES',
 	SET_SELECTED_TILES: 'SET_SELECTED_TILES',
 	SET_GAME_COMPLETE: 'SET_GAME_COMPLETE',
@@ -8,6 +9,7 @@ const ACTION_TYPES = {
 	RESET: 'RESET',
 };
 const {
+	START_GAME,
 	SET_IMAGES,
 	SET_SELECTED_TILES,
 	SET_GAME_COMPLETE,
@@ -16,6 +18,8 @@ const {
 } = ACTION_TYPES;
 
 const initialState = {
+	isGameActive: false,
+	category: '',
 	images: [],
 	selectedTiles: [],
 	matchedIds: [],
@@ -28,6 +32,8 @@ function initialize(state = initialState) {
 
 function reducer(state = initialState, { type, payload }) {
 	switch (type) {
+		case START_GAME:
+			return { ...state, isGameActive: true, category: payload.category };
 		case SET_IMAGES:
 			return { ...state, images: payload };
 		case SET_SELECTED_TILES:

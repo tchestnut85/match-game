@@ -1,0 +1,41 @@
+@import '../../sass/index';
+@import '../../sass/mixins';
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2vh;
+	text-align: center;
+}
+
+.container {
+	@include app-width;
+	@include border-default(none);
+
+	composes: flex-column;
+
+	justify-content: space-around;
+	gap: 1vh;
+	height: 200px;
+	background: $color-quaternary;
+	padding: 25px 0;
+}
+
+.form {
+	@include border-default(none);
+
+	composes: flex-column;
+}
+
+.button {
+	@include border-default(none);
+
+	background: $color-secondary;
+	color: $color-tertiary;
+
+	&:hover {
+		background: $color-tertiary;
+		color: $color-secondary;
+	}
+}

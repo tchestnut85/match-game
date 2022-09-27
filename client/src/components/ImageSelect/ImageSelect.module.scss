@@ -1,0 +1,17 @@
+@import '../../sass/index';
+@import '../../sass/mixins';
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+}
+
+.select {
+	@include border-default(none);
+
+	height: 30px;
+	font-family: $font-default;
+}

@@ -1,15 +1,16 @@
 @import '../../sass/index.scss';
+@import '../../sass/mixins.scss';
 
 .container {
+	@include app-width;
+	@include border-default(none);
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	min-height: 550px;
-	width: 75vw;
-	max-width: 750px;
-	border: $border-default;
-	border-radius: 3px;
 	margin: 10px;
+	background: $color-quaternary;
 }
 
 .tiles {

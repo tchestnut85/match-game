@@ -99,7 +99,7 @@ const GameBoard = () => {
 	}, [matchedIds]);
 
 	return (
-		<div className={styles.container}>
+		<section className={styles.container}>
 			<div className={styles.tiles}>
 				{isGameComplete && (
 					<Modal
@@ -124,7 +124,7 @@ const GameBoard = () => {
 					);
 				})}
 			</div>
-		</div>
+		</section>
 	);
 };
 

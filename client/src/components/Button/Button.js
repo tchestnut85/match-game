@@ -4,16 +4,33 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
 const Button = React.forwardRef(
-	({ label, className = '', value = '', onClick = null }, ref) => (
-		<button
-			className={`${styles.button} ${className}`}
-			value={value || label}
-			ref={ref}
-			onClick={onClick}
-		>
-			{label}
-		</button>
-	)
+	(
+		{
+			label,
+			className = '',
+			value = '',
+			onClick = null,
+			type = 'button',
+			disabled = false,
+		},
+		ref
+	) => {
+		console.log('disabled:', disabled);
+		return (
+			<button
+				className={`${styles.button} ${
+					disabled ? styles.disabled : ''
+				} ${className}`}
+				value={value || label}
+				ref={ref}
+				onClick={onClick}
+				type={type}
+				disabled={disabled}
+			>
+				{label}
+			</button>
+		);
+	}
 );
 
 Button.propTypes = {
@@ -21,6 +38,8 @@ Button.propTypes = {
 	className: PropTypes.string,
 	value: PropTypes.string,
 	onClick: PropTypes.func,
+	type: PropTypes.string,
+	disabled: PropTypes.bool,
 };
 
 export default Button;

@@ -6,3 +6,8 @@
 		border: none;
 	}
 }
+
+@mixin app-width {
+	width: 75vw;
+	max-width: 750px;
+}
