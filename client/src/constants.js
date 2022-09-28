@@ -33,14 +33,14 @@ export const LINKS = {
 	unsplash: 'https://unsplash.com/',
 };
 
-export const IMAGE_OPTIONS = [
+export const CATEGORY_OPTIONS = [
 	'Dogs',
 	'Pugs',
 	'Cats',
-	'Mountains',
+	'Nature',
+	'Running',
 	'Video Games',
-	'Trees',
-	'Flowers',
+	'Foosball',
 	'Space',
 	'Moon',
 	'Computer',
