@@ -1,5 +1,7 @@
 {
 	"name": "client",
+	"author": "Tom Chestnut",
+	"homepage": "https://tchestnut85.github.io/match-game",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
