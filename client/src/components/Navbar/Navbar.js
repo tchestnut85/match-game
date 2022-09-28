@@ -1,29 +1,32 @@
 import { FaGithub } from 'react-icons/fa';
 
-import { LINKS } from 'constants';
-
-// import Button from 'components/Button/Button';
+import Button from 'components/Button/Button';
 import Icon from 'components/Icon/Icon';
 import Link from 'components/Link/Link';
+
+import { useGameContext } from 'state/gameContext';
+import { ACTION_TYPES } from 'state/gameReducer';
+import { LINKS } from 'constants';
+
 import styles from './Navbar.module.scss';
 
-// const BUTTONS = [
-// 	{ label: 'Reset' },
-// 	{ label: 'Scores' } // TODO - add react-router and logic for saving scores to local storage
-// ];
+const BUTTONS = [
+	{ label: 'Reset' },
+	// 	{ label: 'Scores' }
+];
+
+// TODO - add react-router and logic for saving scores to local storage
 
 const Navbar = () => {
-	// TODO - add onClick for Reset button to reset the gameboard state
-	// will need context or redux for this
+	const [, dispatch] = useGameContext();
 
-	// const handleReset = () => {};
-	// const handleViewScores = () => console.log('View Scores');
+	const handleReset = () => dispatch({ type: ACTION_TYPES.RESET });
 
 	return (
 		<nav className={styles.container}>
-			{/* {BUTTONS.map(({ label }) => (
-				<Button key={label} label={label} />
-			))} */}
+			{BUTTONS.map(({ label }) => (
+				<Button key={label} label={label} onClick={handleReset} />
+			))}
 			<Link url={LINKS.github}>
 				<Icon name={FaGithub} />
 			</Link>

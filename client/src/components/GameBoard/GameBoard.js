@@ -5,10 +5,10 @@ import Tile from 'components/Tile/Tile';
 import Modal from 'components/Modal/Modal';
 import styles from './GameBoard.module.scss';
 
-import { useGameContext } from '../../state/gameContext';
-import { initialState, ACTION_TYPES } from '../../state/gameReducer';
-import { getImages } from '../../api/unsplash';
-import { getImageID } from '../../utils/getImageID';
+import { useGameContext } from 'state/gameContext';
+import { initialState, ACTION_TYPES } from 'state/gameReducer';
+import { getImages } from 'api/unsplash';
+import { getImageID } from 'utils/getImageID';
 import { MESSAGES } from 'constants';
 
 // TODO - get tile count from user input
@@ -90,7 +90,7 @@ const GameBoard = () => {
 	};
 
 	const handleRestartGame = () => {
-		dispatch({ type: RESET, payload: initialState });
+		dispatch({ type: RESET });
 		handleImageRequest();
 	};
 

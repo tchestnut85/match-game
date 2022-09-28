@@ -47,7 +47,7 @@ function reducer(state = initialState, { type, payload }) {
 				selectedTiles: payload.selectedTiles,
 			};
 		case RESET:
-			return initialize(payload);
+			return initialize();
 		default:
 			return state;
 	}
