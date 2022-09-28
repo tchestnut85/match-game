@@ -28,7 +28,7 @@ const Navbar = () => {
 				<Button key={label} label={label} onClick={handleReset} />
 			))}
 			<Link url={LINKS.github}>
-				<Icon name={FaGithub} />
+				<Icon icon={FaGithub} />
 			</Link>
 		</nav>
 	);

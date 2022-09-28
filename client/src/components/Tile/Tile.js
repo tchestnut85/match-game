@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { FaQuestionCircle } from 'react-icons/fa';
+
+import Icon from 'components/Icon/Icon';
 
 import { getImageID } from 'utils/getImageID';
 import { useGameContext } from 'state/gameContext';
@@ -29,8 +32,7 @@ const Tile = ({
 		return () => clearTimeout(setHiddenTimeout);
 	}, [selectedTiles, id, isHidden]);
 
-	const handleClick = e => {
-		const { id } = e.target;
+	const handleClick = id => {
 		if (isMatched) return;
 		setIsHidden(false);
 		onClick(id);
@@ -40,7 +42,7 @@ const Tile = ({
 
 	if (isMatched) {
 		return (
-			<div className={matchedStyles} onClick={handleClick}>
+			<div className={matchedStyles} onClick={() => handleClick(id)}>
 				<img id={id} src={url} alt={description} />
 			</div>
 		);
@@ -62,9 +64,12 @@ const Tile = ({
 	}`;
 
 	return (
-		<div className={tileClassNames} onClick={isGameActive ? handleClick : null}>
+		<div
+			className={tileClassNames}
+			onClick={isGameActive ? () => handleClick(id) : null}
+		>
 			{isHidden ? (
-				<i id={id} className="fas fa-question-circle fa-7x" />
+				<Icon id={id} icon={FaQuestionCircle} />
 			) : (
 				<img id={id} src={url} alt={description} />
 			)}
