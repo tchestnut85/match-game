@@ -1,5 +1,4 @@
 @import '../../sass/index.scss';
-@import '../../sass/mixins.scss';
 
 .container {
 	@include app-width;
@@ -8,7 +7,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	min-height: 550px;
+	padding: 30px;
 	margin: 10px;
 	background: $color-quaternary;
 }
@@ -19,4 +18,26 @@
 	grid-template-columns: repeat(auto-fit, 150px);
 	gap: 10px;
 	margin: 10px 0;
+}
+
+@media screen and (max-width: $tablet-query-width) {
+	.tiles {
+		grid-template-columns: repeat(auto-fit, $tablet-width-value);
+	}
+}
+
+@media screen and (max-width: $mobile-query-width) {
+	.container {
+		width: 90vw;
+		padding: 10px;
+	}
+	.tiles {
+		grid-template-columns: repeat(auto-fit, $mobile-width-value);
+	}
+}
+
+@media screen and (max-width: $small-mobile-query-width) {
+	.tiles {
+		grid-template-columns: repeat(auto-fit, $small-mobile-width-value);
+	}
 }

@@ -12,3 +12,13 @@ $border-default: 1px solid #000000;
 // Font
 $font-default: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
 	'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+// Media query max-widths
+$tablet-query-width: 768px;
+$mobile-query-width: 540px;
+$small-mobile-query-width: 320px;
+
+// Media query width values
+$tablet-width-value: 100px;
+$mobile-width-value: 85px;
+$small-mobile-width-value: 75px;

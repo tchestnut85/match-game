@@ -53,3 +53,27 @@
 		border-radius: 50%;
 	}
 }
+
+@media screen and (max-width: $tablet-query-width) {
+	.content > svg,
+	.content > img {
+		height: $tablet-width-value;
+		width: $tablet-width-value;
+	}
+}
+
+@media screen and (max-width: $mobile-query-width) {
+	.content > svg,
+	.content > img {
+		height: $mobile-width-value;
+		width: $mobile-width-value;
+	}
+}
+
+@media screen and (max-width: $small-mobile-query-width) {
+	.content > svg,
+	.content > img {
+		height: $small-mobile-width-value;
+		width: $small-mobile-width-value;
+	}
+}
