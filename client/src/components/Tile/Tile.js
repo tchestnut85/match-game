@@ -18,11 +18,15 @@ const Tile = ({
 	const [isHidden, setIsHidden] = useState(true);
 
 	useEffect(() => {
+		let setHiddenTimeout;
+
 		if (selectedTiles.length === 2 && selectedTiles.includes(id)) {
-			setTimeout(() => {
+			setHiddenTimeout = setTimeout(() => {
 				setIsHidden(true);
 			}, 2000);
 		}
+
+		return () => clearTimeout(setHiddenTimeout);
 	}, [selectedTiles, id, isHidden]);
 
 	const handleClick = e => {

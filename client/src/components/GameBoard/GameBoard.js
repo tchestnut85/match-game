@@ -11,7 +11,7 @@ import { getImages } from '../../api/unsplash';
 import { getImageID } from '../../utils/getImageID';
 import { MESSAGES } from 'constants';
 
-// TODO - get tile count and category from user input
+// TODO - get tile count from user input
 const TILE_COUNT = 12;
 const REQUEST_COUNT = TILE_COUNT / 2;
 
@@ -94,6 +94,11 @@ const GameBoard = () => {
 		handleImageRequest();
 	};
 
+	const handleCloseModal = () => {
+		dispatch({ type: SET_GAME_COMPLETE, payload: false });
+	};
+
+	// invoke image request when the game is started
 	useEffect(() => {
 		if (isGameActive && !images.length) {
 			handleImageRequest();
@@ -123,7 +128,7 @@ const GameBoard = () => {
 						isOpen={isGameComplete}
 						buttons={MODAL_BUTTONS}
 						messages={MODAL_MESSAGES}
-						onClose={{ confirm: handleRestartGame }}
+						onClose={{ confirm: handleRestartGame, cancel: handleCloseModal }}
 					/>
 				)}
 				{imagesToMap.map(({ urls, id, alt_description, description }, i) => {
