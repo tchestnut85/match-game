@@ -14,7 +14,6 @@ import { MESSAGES } from 'constants';
 // TODO - get tile count and category from user input
 const TILE_COUNT = 12;
 const REQUEST_COUNT = TILE_COUNT / 2;
-const TEMP_CATEGORY = 'pugs';
 
 const {
 	modals: { gameComplete: MODAL_MESSAGES },
@@ -32,14 +31,27 @@ const {
 	RESET,
 } = ACTION_TYPES;
 
+const placeholderTiles = Array(TILE_COUNT)
+	.fill(0)
+	.map((_, i) => ({ id: `temp-${i + 1}` }));
+
 const GameBoard = () => {
-	const [{ images, selectedTiles, matchedIds, isGameComplete }, dispatch] =
-		useGameContext();
+	const [
+		{
+			category,
+			images,
+			selectedTiles,
+			matchedIds,
+			isGameActive,
+			isGameComplete,
+		},
+		dispatch,
+	] = useGameContext();
 
 	const checkIsMatched = id => matchedIds.includes(id);
 
 	const handleImageRequest = async () => {
-		const data = await getImages(TEMP_CATEGORY, REQUEST_COUNT);
+		const data = await getImages(category, REQUEST_COUNT);
 		dispatch({ type: SET_IMAGES, payload: shuffle([...data, ...data]) });
 	};
 
@@ -83,8 +95,10 @@ const GameBoard = () => {
 	};
 
 	useEffect(() => {
-		handleImageRequest();
-	}, []);
+		if (isGameActive && !images.length) {
+			handleImageRequest();
+		}
+	}, [isGameActive, images]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		if (selectedTiles.length === 2) {
@@ -96,7 +110,10 @@ const GameBoard = () => {
 		if (matchedIds.length === TILE_COUNT) {
 			checkGameComplete(matchedIds);
 		}
-	}, [matchedIds]);
+	}, [matchedIds]); // eslint-disable-line react-hooks/exhaustive-deps
+
+	const imagesToMap =
+		isGameActive && !!images.length ? images : placeholderTiles;
 
 	return (
 		<section className={styles.container}>
@@ -109,13 +126,13 @@ const GameBoard = () => {
 						onClose={{ confirm: handleRestartGame }}
 					/>
 				)}
-				{images.map(({ urls, id, alt_description, description }, i) => {
+				{imagesToMap.map(({ urls, id, alt_description, description }, i) => {
 					const uniqueId = `${id}-${i}`;
 					return (
 						<Tile
 							key={uniqueId}
 							id={uniqueId}
-							url={urls.regular}
+							url={urls?.regular || ''}
 							description={alt_description || description}
 							selectedTiles={selectedTiles}
 							onClick={handleClick}

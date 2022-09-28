@@ -24,6 +24,7 @@ export const MESSAGES = {
 	},
 	controls: {
 		text: 'Get your game started!',
+		submit: 'START!',
 	},
 };
 
@@ -33,13 +34,13 @@ export const LINKS = {
 };
 
 export const IMAGE_OPTIONS = [
-	'Dog',
-	'Pug',
-	'Cat',
-	'Mountain',
-	'Video Game',
-	'Tree',
-	'Flower',
+	'Dogs',
+	'Pugs',
+	'Cats',
+	'Mountains',
+	'Video Games',
+	'Trees',
+	'Flowers',
 	'Space',
 	'Moon',
 	'Computer',

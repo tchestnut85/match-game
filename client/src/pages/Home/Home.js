@@ -8,14 +8,16 @@ import { useGameContext } from '../../state/gameContext';
 import styles from './Home.module.scss';
 
 function Home() {
-	const [{ images, selectedTiles, matchedIds, isGameComplete }, dispatch] =
-		useGameContext();
+	const [
+		{ images, selectedTiles, matchedIds, isGameActive, isGameComplete },
+		dispatch,
+	] = useGameContext();
 
 	return (
 		<main className={styles.container}>
 			<Header />
-			<Controls />
-			<GameBoard />
+			{!isGameActive && <Controls />}
+			{isGameActive && <GameBoard />}
 			<Footer />
 		</main>
 	);

@@ -39,6 +39,10 @@
 	border: none;
 }
 
+.isNotActive {
+	cursor: default;
+}
+
 @keyframes image-match {
 	from {
 		border: 2px solid $color-tertiary;

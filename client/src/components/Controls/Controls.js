@@ -19,7 +19,7 @@ const Controls = () => {
 
 	const isDisabled = Object.values(formState).some(val => !val);
 
-	const handleChange = ({ target: { name, value } }) => {
+	const handleFormChange = ({ target: { name, value } }) => {
 		setFormState({ [name]: value });
 	};
 
@@ -32,9 +32,9 @@ const Controls = () => {
 		<section className={styles.container}>
 			<h2>{MESSAGES.controls.text}</h2>
 			<form className={styles.form} onSubmit={handleSubmit}>
-				<ImageSelect onChange={handleChange} />
+				<ImageSelect onChange={handleFormChange} />
 				<Button
-					label="START!"
+					label={MESSAGES.controls.submit}
 					type="submit"
 					disabled={isDisabled}
 					className={styles.button}

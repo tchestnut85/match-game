@@ -14,23 +14,20 @@ const Button = React.forwardRef(
 			disabled = false,
 		},
 		ref
-	) => {
-		console.log('disabled:', disabled);
-		return (
-			<button
-				className={`${styles.button} ${
-					disabled ? styles.disabled : ''
-				} ${className}`}
-				value={value || label}
-				ref={ref}
-				onClick={onClick}
-				type={type}
-				disabled={disabled}
-			>
-				{label}
-			</button>
-		);
-	}
+	) => (
+		<button
+			className={`${styles.button} ${
+				disabled ? styles.disabled : ''
+			} ${className}`}
+			value={value || label}
+			ref={ref}
+			onClick={onClick}
+			type={type}
+			disabled={disabled}
+		>
+			{label}
+		</button>
+	)
 );
 
 Button.propTypes = {

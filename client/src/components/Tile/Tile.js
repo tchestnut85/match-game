@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { getImageID } from 'utils/getImageID';
+import { useGameContext } from 'state/gameContext';
 
 import styles from './Tile.module.scss';
 
@@ -13,6 +14,7 @@ const Tile = ({
 	onClick = null,
 	isMatched = false,
 }) => {
+	const [{ isGameActive }] = useGameContext();
 	const [isHidden, setIsHidden] = useState(true);
 
 	useEffect(() => {
@@ -51,10 +53,12 @@ const Tile = ({
 
 	const tileClassNames = `${styles.content} ${
 		isDisabled ? styles.isDisabled : ''
-	} ${isNotMatched ? styles.isNotMatched : ''}`;
+	} ${isNotMatched ? styles.isNotMatched : ''} ${
+		!isGameActive ? styles.isNotActive : ''
+	}`;
 
 	return (
-		<div className={tileClassNames} onClick={handleClick}>
+		<div className={tileClassNames} onClick={isGameActive ? handleClick : null}>
 			{isHidden ? (
 				<i id={id} className="fas fa-question-circle fa-7x" />
 			) : (
