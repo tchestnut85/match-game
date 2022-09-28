@@ -10,25 +10,30 @@ import { LINKS } from 'constants';
 
 import styles from './Navbar.module.scss';
 
-const BUTTONS = [
-	{ label: 'Reset' },
-	// 	{ label: 'Scores' }
-];
-
 // TODO - add react-router and logic for saving scores to local storage
 
 const Navbar = () => {
-	const [, dispatch] = useGameContext();
+	const [{ isGameActive }, dispatch] = useGameContext();
+
+	const BUTTONS = [
+		{ label: 'Reset', isDisabled: !isGameActive },
+		// 	{ label: 'Scores' }
+	];
 
 	const handleReset = () => dispatch({ type: ACTION_TYPES.RESET });
 
 	return (
 		<nav className={styles.container}>
-			{BUTTONS.map(({ label }) => (
-				<Button key={label} label={label} onClick={handleReset} />
+			{BUTTONS.map(({ label, isDisabled }) => (
+				<Button
+					key={label}
+					label={label}
+					disabled={isDisabled}
+					onClick={handleReset}
+				/>
 			))}
 			<Link url={LINKS.github}>
-				<Icon name={FaGithub} />
+				<Icon icon={FaGithub} />
 			</Link>
 		</nav>
 	);

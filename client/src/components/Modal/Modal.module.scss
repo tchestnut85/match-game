@@ -34,3 +34,16 @@ $height: 200px;
 	justify-content: center;
 	gap: 12px;
 }
+
+@media screen and (max-width: $mobile-query-width) {
+	.container {
+		width: 200px;
+	}
+
+	.form {
+		h2,
+		h3 {
+			font-size: $mobile-font-size;
+		}
+	}
+}

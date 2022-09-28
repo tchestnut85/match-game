@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { IMAGE_OPTIONS, MESSAGES } from 'constants';
+import { CATEGORY_OPTIONS, MESSAGES } from 'constants';
 
 import styles from './ImageSelect.module.scss';
 
@@ -17,7 +17,7 @@ const ImageSelect = ({ onChange }) => {
 				className={styles.select}
 			>
 				<option value="">{MESSAGES.imageSelect.optionPlaceholder}</option>
-				{IMAGE_OPTIONS.map(option => (
+				{CATEGORY_OPTIONS.map(option => (
 					<option key={option} value={option}>
 						{option}
 					</option>

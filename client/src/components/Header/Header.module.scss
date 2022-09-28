@@ -14,10 +14,19 @@
 	}
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: $mobile-query-width) {
 	.container {
-		flex-direction: column;
-		justify-content: center;
 		gap: 24px;
+		padding: 12px;
+
+		h1 {
+			font-size: 24px;
+		}
+	}
+}
+
+@media screen and (max-width: $small-mobile-query-width) {
+	.container {
+		justify-content: center;
 	}
 }
