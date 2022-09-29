@@ -16,6 +16,7 @@ $height: 200px;
 	text-align: center;
 	background: $color-secondary;
 	color: $color-primary;
+	margin: auto;
 
 	&::backdrop {
 		background: rgba(100, 150, 150, 0.75);

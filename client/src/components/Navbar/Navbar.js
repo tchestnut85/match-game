@@ -1,12 +1,7 @@
-import { FaGithub } from 'react-icons/fa';
-
 import Button from 'components/Button/Button';
-import Icon from 'components/Icon/Icon';
-import Link from 'components/Link/Link';
 
 import { useGameContext } from 'state/gameContext';
 import { ACTION_TYPES } from 'state/gameReducer';
-import { LINKS } from 'constants';
 
 import styles from './Navbar.module.scss';
 
@@ -32,9 +27,6 @@ const Navbar = () => {
 					onClick={handleReset}
 				/>
 			))}
-			<Link url={LINKS.github}>
-				<Icon icon={FaGithub} />
-			</Link>
 		</nav>
 	);
 };

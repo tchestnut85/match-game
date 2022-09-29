@@ -1,7 +1,28 @@
+@import '../../sass/index';
+
 .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: $color-secondary;
 	height: 80px;
 	width: 100%;
 	padding: 30px;
 	margin-top: auto;
 	text-align: center;
+}
+
+.unsplashLink {
+	color: $color-primary;
+
+	&:hover {
+		color: $color-tertiary;
+	}
+}
+
+@media screen and (max-width: $tablet-query-width) {
+	.container {
+		height: 50px;
+		font-size: 12px;
+	}
 }

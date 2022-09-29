@@ -4,31 +4,6 @@ import PropTypes from 'prop-types';
 import Button from 'components/Button/Button';
 import styles from './Modal.module.scss';
 
-const DIVISOR = 2;
-const MODAL_PROPERTIES = {
-	width: {
-		id: 'Width',
-		size: 500,
-	},
-	height: {
-		id: 'Height',
-		size: 200,
-	},
-};
-
-const getPosition = type => {
-	return (
-		window[`inner${type}`] / DIVISOR -
-		MODAL_PROPERTIES[`${type.toLowerCase()}`].size / DIVISOR
-	);
-};
-
-// style properties to center the modal
-const modalPositions = {
-	left: getPosition(MODAL_PROPERTIES.width.id),
-	top: getPosition(MODAL_PROPERTIES.height.id),
-};
-
 const Modal = ({
 	isOpen,
 	buttons = {},
@@ -60,11 +35,7 @@ const Modal = ({
 
 	return (
 		// dialog element: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
-		<dialog
-			ref={dialogRef}
-			className={styles.container}
-			style={{ ...modalPositions }}
-		>
+		<dialog ref={dialogRef} className={styles.container}>
 			<form method="dialog" className={styles.form}>
 				<h2>{messages.primary}</h2>
 				<h3>{messages.secondary}</h3>

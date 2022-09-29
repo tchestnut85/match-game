@@ -1,4 +1,7 @@
+import { FaGithub } from 'react-icons/fa';
+
 import Link from 'components/Link/Link';
+import Icon from 'components/Icon/Icon';
 
 import { LINKS, MESSAGES } from 'constants';
 
@@ -9,9 +12,14 @@ const Footer = () => (
 		<p>
 			{MESSAGES.unsplashCredits.text}
 			<span>
-				<Link url={LINKS.unsplash}>{MESSAGES.unsplashCredits.unsplash}</Link>
+				<Link url={LINKS.unsplash} className={styles.unsplashLink}>
+					{MESSAGES.unsplashCredits.unsplash}
+				</Link>
 			</span>
 		</p>
+		<Link url={LINKS.github}>
+			<Icon icon={FaGithub} />
+		</Link>
 	</footer>
 );
 
