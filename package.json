@@ -1,7 +1,7 @@
 {
 	"name": "match-game",
 	"version": "1.0.0",
-	"description": "match game using react",
+	"description": "A simple picture matching game created with React and using the Unsplash API.",
 	"main": "/client/src/index.js",
 	"scripts": {
 		"start": "cd client && npm start",
