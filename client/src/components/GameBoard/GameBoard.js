@@ -89,14 +89,10 @@ const GameBoard = () => {
 		return isMatch ? handleDidMatch([tileA, tileB]) : handeDidNotMatch();
 	};
 
-	const handleRestartGame = () => {
-		dispatch({ type: RESET });
-		handleImageRequest();
-	};
+	const handleRestartGame = () => dispatch({ type: RESET });
 
-	const handleCloseModal = () => {
+	const handleCloseModal = () =>
 		dispatch({ type: SET_GAME_COMPLETE, payload: false });
-	};
 
 	// invoke image request when the game is started
 	useEffect(() => {
