@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { UNSPLASH_API } from 'constants';
+import { UNSPLASH_API } from '../constants';
 
 const { BASE_URL, ENDPOINT } = UNSPLASH_API;
 

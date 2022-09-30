@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FaQuestionCircle } from 'react-icons/fa';
 
-import Icon from 'components/Icon/Icon';
+import Icon from '../Icon/Icon';
 
-import { getImageID } from 'utils/getImageID';
-import { useGameContext } from 'state/gameContext';
+import { getImageID } from '../../utils/getImageID';
+import { useGameContext } from '../../state/gameContext';
 
 import styles from './Tile.module.scss';
 

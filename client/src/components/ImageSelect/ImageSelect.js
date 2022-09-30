@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { CATEGORY_OPTIONS, MESSAGES } from 'constants';
+import { CATEGORY_OPTIONS, MESSAGES } from '../../constants';
 
 import styles from './ImageSelect.module.scss';
 

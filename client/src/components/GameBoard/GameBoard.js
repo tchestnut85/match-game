@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import shuffle from 'lodash/shuffle';
 
-import Tile from 'components/Tile/Tile';
-import Modal from 'components/Modal/Modal';
+import Tile from '../Tile/Tile';
+import Modal from '../Modal/Modal';
 import styles from './GameBoard.module.scss';
 
-import { useGameContext } from 'state/gameContext';
-import { initialState, ACTION_TYPES } from 'state/gameReducer';
-import { getImages } from 'api/unsplash';
-import { getImageID } from 'utils/getImageID';
-import { MESSAGES } from 'constants';
+import { useGameContext } from '../../state/gameContext';
+import { initialState, ACTION_TYPES } from '../../state/gameReducer';
+import { getImages } from '../../api/unsplash';
+import { getImageID } from '../../utils/getImageID';
+import { MESSAGES } from '../../constants';
 
 // TODO - get tile count from user input
 const TILE_COUNT = 12;

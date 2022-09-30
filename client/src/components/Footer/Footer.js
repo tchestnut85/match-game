@@ -1,9 +1,9 @@
 import { FaGithub } from 'react-icons/fa';
 
-import Link from 'components/Link/Link';
-import Icon from 'components/Icon/Icon';
+import Link from '../Link/Link';
+import Icon from '../Icon/Icon';
 
-import { LINKS, MESSAGES } from 'constants';
+import { LINKS, MESSAGES } from '../../constants';
 
 import styles from './Footer.module.scss';
 

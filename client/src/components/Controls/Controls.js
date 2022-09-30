@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import Button from 'components/Button/Button';
-import ImageSelect from 'components/ImageSelect/ImageSelect';
+import Button from '../Button/Button';
+import ImageSelect from '../ImageSelect/ImageSelect';
 
-import { ACTION_TYPES } from 'state/gameReducer';
-import { useGameContext } from 'state/gameContext';
-import { MESSAGES } from 'constants';
+import { ACTION_TYPES } from '../../state/gameReducer';
+import { useGameContext } from '../../state/gameContext';
+import { MESSAGES } from '../../constants';
 
 import styles from './Controls.module.scss';
 

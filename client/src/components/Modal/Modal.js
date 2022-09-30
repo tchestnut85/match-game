@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from 'components/Button/Button';
+import Button from '../Button/Button';
 import styles from './Modal.module.scss';
 
 const Modal = ({

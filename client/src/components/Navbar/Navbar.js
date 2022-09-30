@@ -1,7 +1,7 @@
-import Button from 'components/Button/Button';
+import Button from '../Button/Button';
 
-import { useGameContext } from 'state/gameContext';
-import { ACTION_TYPES } from 'state/gameReducer';
+import { useGameContext } from '../../state/gameContext';
+import { ACTION_TYPES } from '../../state/gameReducer';
 
 import styles from './Navbar.module.scss';
 

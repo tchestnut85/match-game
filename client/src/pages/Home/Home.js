@@ -1,6 +1,6 @@
-import Header from 'components/Header/Header';
-import GameBoard from 'components/GameBoard/GameBoard';
-import Controls from 'components/Controls/Controls';
+import Header from '../../components/Header/Header';
+import GameBoard from '../../components/GameBoard/GameBoard';
+import Controls from '../../components/Controls/Controls';
 
 import { useGameContext } from '../../state/gameContext';
 

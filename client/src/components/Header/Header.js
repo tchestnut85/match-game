@@ -1,6 +1,6 @@
-import { APP_NAME } from 'constants';
+import { APP_NAME } from '../../constants';
 
-import Navbar from 'components/Navbar/Navbar';
+import Navbar from '../Navbar/Navbar';
 import styles from './Header.module.scss';
 
 const Header = () => {
