@@ -85,7 +85,7 @@ const GameBoard = () => {
 
 	const handleCheckMatch = () => {
 		const [tileA, tileB] = selectedTiles;
-		const isMatch = getImageID(tileA) === getImageID(tileB);
+		const isMatch = getImageID({ id: tileA }) === getImageID({ id: tileB });
 		return isMatch ? handleDidMatch([tileA, tileB]) : handeDidNotMatch();
 	};
 

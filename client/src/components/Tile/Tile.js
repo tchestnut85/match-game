@@ -55,7 +55,8 @@ const Tile = ({
 	const isNotMatched =
 		selectedTiles.length === 2 &&
 		selectedTiles.includes(id) &&
-		getImageID(selectedTiles[0]) !== getImageID(selectedTiles[1]);
+		getImageID({ id: selectedTiles[0] }) !==
+			getImageID({ id: selectedTiles[1] });
 
 	const tileClassNames = `${styles.content} ${
 		isDisabled ? styles.isDisabled : ''
