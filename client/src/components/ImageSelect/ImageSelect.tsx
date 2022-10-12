@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import { CATEGORY_OPTIONS, MESSAGES } from '../../constants';
 
@@ -6,7 +6,11 @@ import styles from './ImageSelect.module.scss';
 
 const IMAGE_SELECT_NAME = 'category';
 
-const ImageSelect = ({ onChange }) => {
+type ImageSelectProps = {
+	onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+};
+
+const ImageSelect = ({ onChange }: ImageSelectProps) => {
 	return (
 		<div className={styles.container}>
 			<label>{MESSAGES.imageSelect.label}</label>
@@ -25,10 +29,6 @@ const ImageSelect = ({ onChange }) => {
 			</select>
 		</div>
 	);
-};
-
-ImageSelect.propTypes = {
-	onChange: PropTypes.func.isRequired,
 };
 
 export default ImageSelect;
