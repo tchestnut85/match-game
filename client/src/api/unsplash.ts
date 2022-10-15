@@ -1,16 +1,18 @@
 import axios from 'axios';
 
 import { UNSPLASH_API } from '../constants';
+import { IImage } from '../types';
 
 const { BASE_URL, ENDPOINT } = UNSPLASH_API;
 
-interface GetImagesInterface {
+interface IImageRequest {
 	urls: { regular: string };
 	id: string;
 	alt_description: string;
 	description: string;
 }
-type GetImagesArray = GetImagesInterface[];
+
+type GetImagesArray = IImage[];
 
 const unsplashRequest = axios.create({
 	baseURL: BASE_URL,
@@ -24,9 +26,18 @@ export async function getImages(
 	query: string,
 	count: number
 ): Promise<GetImagesArray> {
-	const res = await unsplashRequest.get(ENDPOINT, {
+	const { data } = await unsplashRequest.get(ENDPOINT, {
 		params: { query, count },
 	});
 
-	return res.data;
+	const images = data.map((image: IImageRequest): IImage => {
+		return {
+			url: image.urls.regular,
+			id: image.id,
+			alt_description: image.alt_description,
+			description: image.description,
+		};
+	});
+
+	return images;
 }

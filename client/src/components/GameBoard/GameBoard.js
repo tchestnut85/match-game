@@ -127,13 +127,13 @@ const GameBoard = () => {
 						onClose={{ confirm: handleRestartGame, cancel: handleCloseModal }}
 					/>
 				)}
-				{imagesToMap.map(({ urls, id, alt_description, description }, i) => {
+				{imagesToMap.map(({ url, id, alt_description, description }, i) => {
 					const uniqueId = `${id}-${i}`;
 					return (
 						<Tile
 							key={uniqueId}
 							id={uniqueId}
-							url={urls?.regular || ''}
+							url={url || ''}
 							description={alt_description || description}
 							selectedTiles={selectedTiles}
 							onClick={handleClick}
