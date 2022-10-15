@@ -14,14 +14,6 @@ interface IIconProps extends IIconBaseProps {
 
 interface IIconComponent extends IIconBaseProps {}
 
-// interface IIconComponent extends IIconBaseProps {
-// 	color: string;
-// 	className?: string;
-// 	size?: number;
-// 	children?: React.FC | null;
-// 	id?: string | null;
-// }
-
 const Icon = ({
 	icon,
 	color = '#00ffff',
