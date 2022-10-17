@@ -1,7 +1,7 @@
 import Button from '../Button/Button';
 
 import { useGameContext } from '../../state/gameContext';
-import { ACTION_TYPES } from '../../state/gameReducer';
+import { ActionTypes } from '../../state/gameReducer';
 
 import styles from './Navbar.module.scss';
 
@@ -15,7 +15,7 @@ const Navbar = () => {
 		// 	{ label: 'Scores' }
 	];
 
-	const handleReset = () => dispatch({ type: ACTION_TYPES.RESET });
+	const handleReset = () => dispatch({ type: ActionTypes.RESET });
 
 	return (
 		<nav className={styles.container}>

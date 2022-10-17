@@ -6,7 +6,7 @@ import Modal from '../Modal/Modal';
 import styles from './GameBoard.module.scss';
 
 import { useGameContext } from '../../state/gameContext';
-import { initialState, ACTION_TYPES } from '../../state/gameReducer';
+import { initialState, ActionTypes } from '../../state/gameReducer';
 import { getImages } from '../../api/unsplash';
 import { getImageID } from '../../utils/getImageID';
 import { MESSAGES } from '../../constants';
@@ -29,7 +29,7 @@ const {
 	SET_GAME_COMPLETE,
 	HANDLE_MATCH,
 	RESET,
-} = ACTION_TYPES;
+} = ActionTypes;
 
 const placeholderTiles = Array(TILE_COUNT)
 	.fill(0)

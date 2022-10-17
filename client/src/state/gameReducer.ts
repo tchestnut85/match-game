@@ -1,13 +1,7 @@
 import { useReducer } from 'react';
 
-const ACTION_TYPES = {
-	START_GAME: 'START_GAME',
-	SET_IMAGES: 'SET_IMAGES',
-	SET_SELECTED_TILES: 'SET_SELECTED_TILES',
-	SET_GAME_COMPLETE: 'SET_GAME_COMPLETE',
-	HANDLE_MATCH: 'HANDLE_MATCH',
-	RESET: 'RESET',
-};
+import { IGameState, IGameAction, ActionTypes } from '../types';
+
 const {
 	START_GAME,
 	SET_IMAGES,
@@ -15,9 +9,9 @@ const {
 	SET_GAME_COMPLETE,
 	HANDLE_MATCH,
 	RESET,
-} = ACTION_TYPES;
+} = ActionTypes;
 
-const initialState = {
+const initialState: IGameState = {
 	isGameActive: false,
 	category: '',
 	images: [],
@@ -30,10 +24,13 @@ function initialize(state = initialState) {
 	return state;
 }
 
-function reducer(state = initialState, { type, payload }) {
+function reducer(
+	state: IGameState = initialState,
+	{ type, payload }: IGameAction
+): IGameState {
 	switch (type) {
 		case START_GAME:
-			return { ...state, isGameActive: true, category: payload.category };
+			return { ...state, isGameActive: true, category: payload };
 		case SET_IMAGES:
 			return { ...state, images: payload };
 		case SET_SELECTED_TILES:
@@ -57,4 +54,4 @@ function useGameReducer() {
 	return useReducer(reducer, initialState, initialize);
 }
 
-export { useGameReducer, initialState, ACTION_TYPES };
+export { useGameReducer, initialState, ActionTypes };

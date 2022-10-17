@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Button from '../Button/Button';
 import ImageSelect from '../ImageSelect/ImageSelect';
 
-import { ACTION_TYPES } from '../../state/gameReducer';
+import { ActionTypes } from '../../state/gameReducer';
 import { useGameContext } from '../../state/gameContext';
 import { MESSAGES } from '../../constants';
 
@@ -25,7 +25,7 @@ const Controls = () => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		dispatch({ type: ACTION_TYPES.START_GAME, payload: { category } });
+		dispatch({ type: ActionTypes.START_GAME, payload: category });
 	};
 
 	return (
