@@ -41,7 +41,6 @@ interface IHandleMatchAction {
 
 interface IResetAction {
 	type: ActionTypes.RESET;
-	payload: undefined;
 }
 
 export type IGameAction =

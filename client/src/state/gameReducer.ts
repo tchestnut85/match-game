@@ -26,22 +26,22 @@ function initialize(state = initialState) {
 
 function reducer(
 	state: IGameState = initialState,
-	{ type, payload }: IGameAction
+	action: IGameAction
 ): IGameState {
-	switch (type) {
+	switch (action.type) {
 		case START_GAME:
-			return { ...state, isGameActive: true, category: payload };
+			return { ...state, isGameActive: true, category: action.payload };
 		case SET_IMAGES:
-			return { ...state, images: payload };
+			return { ...state, images: action.payload };
 		case SET_SELECTED_TILES:
-			return { ...state, selectedTiles: payload };
+			return { ...state, selectedTiles: action.payload };
 		case SET_GAME_COMPLETE:
-			return { ...state, isGameComplete: payload };
+			return { ...state, isGameComplete: action.payload };
 		case HANDLE_MATCH:
 			return {
 				...state,
-				matchedIds: payload.matchedIds,
-				selectedTiles: payload.selectedTiles,
+				matchedIds: action.payload.matchedIds,
+				selectedTiles: action.payload.selectedTiles,
 			};
 		case RESET:
 			return initialize();
