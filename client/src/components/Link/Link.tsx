@@ -5,7 +5,7 @@ import styles from './Link.module.scss';
 interface ILinkProps {
 	url: string;
 	children: React.ReactNode;
-	className: string;
+	className?: string;
 }
 
 const Link = ({ url, children, className = '' }: ILinkProps) => (

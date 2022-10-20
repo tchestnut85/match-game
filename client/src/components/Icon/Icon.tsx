@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IIconBaseProps {
-	color: string;
+	color?: string;
 	className?: string;
 	size?: number;
 	children?: React.FC | null;

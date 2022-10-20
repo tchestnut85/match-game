@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, MouseEventHandler } from 'react';
+import { forwardRef, MouseEventHandler } from 'react';
 
 import styles from './Button.module.scss';
 
