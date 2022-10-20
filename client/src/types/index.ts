@@ -1,4 +1,4 @@
-import { ActionTypes, IGameAction } from './actionTypes';
+import { ActionTypes, IGameAction, ProviderValue } from './actionTypes';
 
 interface IImage {
 	url: string;
@@ -17,4 +17,4 @@ interface IGameState {
 }
 
 export { IImage, IGameState, ActionTypes };
-export type { IGameAction };
+export type { IGameAction, ProviderValue };

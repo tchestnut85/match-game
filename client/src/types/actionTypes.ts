@@ -1,4 +1,6 @@
-import { IImage } from './index';
+import { Dispatch } from 'react';
+
+import { IImage, IGameState } from './index';
 
 export enum ActionTypes {
 	START_GAME = 'START_GAME',
@@ -11,27 +13,27 @@ export enum ActionTypes {
 
 interface IStartGameAction {
 	type: ActionTypes.START_GAME;
-	payload: string;
+	payload?: string;
 }
 
 interface ISetImagesAction {
 	type: ActionTypes.SET_IMAGES;
-	payload: IImage[];
+	payload?: IImage[];
 }
 
 interface ISetSelectedTilesAction {
 	type: ActionTypes.SET_SELECTED_TILES;
-	payload: string[];
+	payload?: string[];
 }
 
 interface ISetGameCompleteAction {
 	type: ActionTypes.SET_GAME_COMPLETE;
-	payload: boolean;
+	payload?: boolean;
 }
 
 interface IHandleMatchAction {
 	type: ActionTypes.HANDLE_MATCH;
-	payload: {
+	payload?: {
 		matchedIds: string[];
 		selectedTiles: string[];
 	};
@@ -39,7 +41,6 @@ interface IHandleMatchAction {
 
 interface IResetAction {
 	type: ActionTypes.RESET;
-	payload: never;
 }
 
 export type IGameAction =
@@ -49,3 +50,5 @@ export type IGameAction =
 	| ISetGameCompleteAction
 	| IHandleMatchAction
 	| IResetAction;
+
+export type ProviderValue = [IGameState, Dispatch<IGameAction>];
