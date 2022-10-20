@@ -1,9 +1,7 @@
-import { createContext, useContext, Dispatch, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 
 import { useGameReducer } from './gameReducer';
-import { IGameState, IGameAction } from '../types';
-
-type ProviderValue = [IGameState, Dispatch<IGameAction>];
+import { ProviderValue } from '../types';
 
 const GameContext = createContext<ProviderValue | null>(null);
 const { Provider } = GameContext;

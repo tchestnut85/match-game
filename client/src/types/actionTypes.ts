@@ -13,27 +13,27 @@ export enum ActionTypes {
 
 interface IStartGameAction {
 	type: ActionTypes.START_GAME;
-	payload?: string;
+	payload: string;
 }
 
 interface ISetImagesAction {
 	type: ActionTypes.SET_IMAGES;
-	payload?: IImage[];
+	payload: IImage[];
 }
 
 interface ISetSelectedTilesAction {
 	type: ActionTypes.SET_SELECTED_TILES;
-	payload?: string[];
+	payload: string[];
 }
 
 interface ISetGameCompleteAction {
 	type: ActionTypes.SET_GAME_COMPLETE;
-	payload?: boolean;
+	payload: boolean;
 }
 
 interface IHandleMatchAction {
 	type: ActionTypes.HANDLE_MATCH;
-	payload?: {
+	payload: {
 		matchedIds: string[];
 		selectedTiles: string[];
 	};
@@ -41,6 +41,7 @@ interface IHandleMatchAction {
 
 interface IResetAction {
 	type: ActionTypes.RESET;
+	payload: undefined;
 }
 
 export type IGameAction =
