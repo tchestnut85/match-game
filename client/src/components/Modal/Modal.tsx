@@ -39,7 +39,12 @@ const Modal = ({
 	const handleCancel = () => handleClose(CANCEL_BTN);
 
 	useEffect(() => {
-		if (isModalOpen && dialogRef.current) dialogRef.current.showModal();
+		const dialog = dialogRef.current;
+		if (isModalOpen && dialog) dialog.showModal();
+
+		// fix showModal() bug due to react strict mode simulating remounting a component
+		// see: https://github.com/facebook/react/issues/24399
+		return () => dialog?.close();
 	}, [isModalOpen, dialogRef]);
 
 	return (

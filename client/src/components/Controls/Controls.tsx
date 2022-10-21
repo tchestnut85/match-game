@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, MouseEvent } from 'react';
 
 import Button from '../Button/Button';
 import ImageSelect from '../ImageSelect/ImageSelect';
@@ -13,17 +13,19 @@ import styles from './Controls.module.scss';
 
 const Controls = () => {
 	const [formState, setFormState] = useState({ category: '' });
-	const [, dispatch] = useGameContext();
+	const gameContext = useGameContext();
+	const [, dispatch] = gameContext!;
 
 	const { category } = formState;
 
 	const isDisabled = Object.values(formState).some(val => !val);
 
-	const handleFormChange = ({ target: { name, value } }) => {
-		setFormState({ [name]: value });
+	const handleFormChange = (event: ChangeEvent<HTMLSelectElement>) => {
+		const { value } = event.target as HTMLSelectElement;
+		setFormState({ category: value });
 	};
 
-	const handleSubmit = event => {
+	const handleSubmit = (event: MouseEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		dispatch({ type: ActionTypes.START_GAME, payload: category });
 	};
