@@ -1,23 +1,32 @@
 import { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import Button from '../Button/Button';
 import styles from './Modal.module.scss';
+
+interface ModalProps {
+	isOpen: boolean;
+	buttons: { [key: string]: string };
+	messages: { [key: string]: string };
+	onClose: {
+		confirm: Function | null;
+		cancel: Function | null;
+	};
+}
 
 const Modal = ({
 	isOpen,
 	buttons = {},
 	messages = {},
 	onClose = { confirm: null, cancel: null },
-}) => {
+}: ModalProps) => {
 	const [isModalOpen, setIsModalOpen] = useState(isOpen);
 
-	const dialogRef = useRef(null);
+	const dialogRef = useRef<HTMLDialogElement | null>(null);
 
 	const BUTTON_IDS = Object.keys(buttons);
 	const [CONFIRM_BTN, CANCEL_BTN] = BUTTON_IDS;
 
-	const handleClose = action => {
+	const handleClose = (action: string) => {
 		const isConfirmButton = action === CONFIRM_BTN;
 		const isCancelButton = action === CANCEL_BTN;
 
@@ -55,16 +64,6 @@ const Modal = ({
 			</form>
 		</dialog>
 	);
-};
-
-Modal.propTypes = {
-	isOpen: PropTypes.bool.isRequired,
-	buttons: PropTypes.shape({}).isRequired,
-	messages: PropTypes.shape({}).isRequired,
-	onClose: PropTypes.shape({
-		confirm: PropTypes.func,
-		cancel: PropTypes.func,
-	}),
 };
 
 export default Modal;
