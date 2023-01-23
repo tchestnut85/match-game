@@ -2,14 +2,14 @@ import { forwardRef, MouseEventHandler } from 'react';
 
 import styles from './Button.module.scss';
 
-interface ButtonProps {
+type ButtonProps = {
 	className?: string;
 	disabled?: boolean;
 	label: string;
 	onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 	type?: 'button' | 'submit';
 	value?: string;
-}
+};
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(

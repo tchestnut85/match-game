@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import { IGameState, IGameAction, ActionTypes } from '../types';
+import { IGameState, GameAction, ActionTypes } from '../types';
 
 const {
 	START_GAME,
@@ -26,7 +26,7 @@ function initialize(state = initialState) {
 
 function reducer(
 	state: IGameState = initialState,
-	action: IGameAction
+	action: GameAction
 ): IGameState {
 	switch (action.type) {
 		case START_GAME:

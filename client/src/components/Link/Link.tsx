@@ -2,13 +2,13 @@ import React from 'react';
 
 import styles from './Link.module.scss';
 
-interface ILinkProps {
+type LinkProps = {
 	url: string;
 	children: React.ReactNode;
 	className?: string;
-}
+};
 
-const Link = ({ url, children, className = '' }: ILinkProps) => (
+const Link = ({ url, children, className = '' }: LinkProps) => (
 	<a
 		href={url}
 		target="_blank"

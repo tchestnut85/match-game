@@ -43,7 +43,7 @@ interface IResetAction {
 	type: ActionTypes.RESET;
 }
 
-export type IGameAction =
+export type GameAction =
 	| IStartGameAction
 	| ISetImagesAction
 	| ISetSelectedTilesAction
@@ -51,4 +51,4 @@ export type IGameAction =
 	| IHandleMatchAction
 	| IResetAction;
 
-export type ProviderValue = [IGameState, Dispatch<IGameAction>];
+export type ProviderValue = [IGameState, Dispatch<GameAction>];

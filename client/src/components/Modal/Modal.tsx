@@ -3,21 +3,21 @@ import { useState, useRef, useEffect } from 'react';
 import Button from '../Button/Button';
 import styles from './Modal.module.scss';
 
-interface ModalProps {
+type ModalProps = {
 	isOpen: boolean;
 	buttons: { [key: string]: string };
 	messages: { [key: string]: string };
 	onClose: {
-		confirm: Function | null;
-		cancel: Function | null;
+		confirm: () => void;
+		cancel: () => void;
 	};
-}
+};
 
 const Modal = ({
 	isOpen,
 	buttons = {},
 	messages = {},
-	onClose = { confirm: null, cancel: null },
+	onClose,
 }: ModalProps) => {
 	const [isModalOpen, setIsModalOpen] = useState(isOpen);
 
