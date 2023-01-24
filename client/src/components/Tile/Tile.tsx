@@ -10,12 +10,12 @@ import { IGameState } from '../../types';
 import styles from './Tile.module.scss';
 
 type TileProps = {
-	url: string;
 	id: string;
-	description: string;
-	selectedTiles: string[];
 	onClick: (id: string) => void;
-	isMatched: boolean;
+	url?: string;
+	description?: string;
+	selectedTiles?: string[];
+	isMatched?: boolean;
 };
 
 const Tile = ({

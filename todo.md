@@ -1,3 +1,4 @@
+- [ ] add select for choosing difficulty/number of tiles
 - [x] add context or redux to allow resetting the game state when clicking the Reset button in the Navbar
 - [ ] add a confirmation modal when clicking the navbar reset button before resetting
 - [ ] add score or # of attempts to the modal when finishing a game
