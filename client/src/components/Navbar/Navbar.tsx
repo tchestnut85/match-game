@@ -1,21 +1,19 @@
-import Button from 'components/Button/Button';
+import Button from '../Button/Button';
 
-import { useGameContext } from 'state/gameContext';
-import { ACTION_TYPES } from 'state/gameReducer';
+import { useGameContext } from '../../state/gameContext';
+import { ActionTypes } from '../../state/gameReducer';
 
 import styles from './Navbar.module.scss';
 
 // TODO - add react-router and logic for saving scores to local storage
 
 const Navbar = () => {
-	const [{ isGameActive }, dispatch] = useGameContext();
+	const gameContext = useGameContext();
+	const [{ isGameActive }, dispatch] = gameContext!;
 
-	const BUTTONS = [
-		{ label: 'Reset', isDisabled: !isGameActive },
-		// 	{ label: 'Scores' }
-	];
+	const BUTTONS = [{ label: 'Reset', isDisabled: !isGameActive }];
 
-	const handleReset = () => dispatch({ type: ACTION_TYPES.RESET });
+	const handleReset = () => dispatch({ type: ActionTypes.RESET });
 
 	return (
 		<nav className={styles.container}>
