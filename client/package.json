@@ -38,7 +38,8 @@
 		"workbox-streams": "^5.1.4",
 		"yup": "^0.32.11"
 	},
-		"devDependencies": {
+	"devDependencies": {
+		"gh-pages": "^4.0.0",
 		"sass": "^1.55.0",
 		"source-map-loader": "^4.0.0",
 		"ts-loader": "^9.4.1",
@@ -71,9 +72,5 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
-	},
-	"devDependencies": {
-		"gh-pages": "^4.0.0",
-		"sass": "^1.55.0"
 	}
 }
