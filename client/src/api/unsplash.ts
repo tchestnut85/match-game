@@ -4,6 +4,7 @@ import { UNSPLASH_API } from '../constants';
 import { IImage } from '../types';
 
 const { BASE_URL, ENDPOINT } = UNSPLASH_API;
+const unsplashKey = import.meta.env.VITE_UNSPLASH_KEY;
 
 interface IImageRequest {
 	urls: { regular: string };
@@ -18,7 +19,7 @@ const unsplashRequest = axios.create({
 	baseURL: BASE_URL,
 	headers: {
 		'Accept-Version': 'v1',
-		Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_KEY}`,
+		Authorization: `Client-ID ${unsplashKey}`,
 	},
 });
 
