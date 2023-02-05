@@ -31,7 +31,7 @@ const Tile = ({
 	const [isHidden, setIsHidden] = useState(true);
 
 	useEffect(() => {
-		let setHiddenTimeout: NodeJS.Timeout;
+		let setHiddenTimeout: number;
 
 		if (selectedTiles.length === 2 && selectedTiles.includes(id)) {
 			setHiddenTimeout = setTimeout(() => {
