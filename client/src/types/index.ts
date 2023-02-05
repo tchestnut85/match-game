@@ -16,5 +16,5 @@ interface IGameState {
 	isGameComplete: boolean;
 }
 
-export { IImage, IGameState, ActionTypes };
+export type { IImage, IGameState, ActionTypes };
 export type { GameAction, ProviderValue };
