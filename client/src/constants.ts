@@ -1,3 +1,5 @@
+import { ActionTypes } from './types/actionTypes';
+
 export const APP_NAME = 'Match Game';
 
 export const UNSPLASH_API = {

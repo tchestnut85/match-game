@@ -1,5 +1,5 @@
 {
-	"name": "Match Game",
+	"name": "match-game",
 	"version": "1.2.0",
 	"description": "A simple picture matching game created with React and TypeScript. Uses the Unsplash API for images.",
 	"main": "/client/src/index.js",

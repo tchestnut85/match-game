@@ -3,9 +3,8 @@ import { useState, ChangeEvent, MouseEvent } from 'react';
 import Button from '../Button/Button';
 import ImageSelect from '../ImageSelect/ImageSelect';
 
-import { ActionTypes } from '../../state/gameReducer';
 import { useGameContext } from '../../state/gameContext';
-import { MESSAGES } from '../../constants';
+import { MESSAGES, ACTION_TYPES } from '../../constants';
 
 import styles from './Controls.module.scss';
 
@@ -27,7 +26,7 @@ const Controls = () => {
 
 	const handleSubmit = (event: MouseEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		dispatch({ type: ActionTypes.START_GAME, payload: category });
+		dispatch({ type: ACTION_TYPES.START_GAME, payload: category });
 	};
 
 	return (

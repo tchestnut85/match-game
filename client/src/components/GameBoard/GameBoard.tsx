@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import shuffle from 'lodash/shuffle';
 
 import Tile from '../Tile/Tile';
 import Modal from '../Modal/Modal';
 
 import { useGameContext } from '../../state/gameContext';
-import { initialState, ActionTypes } from '../../state/gameReducer';
+import { initialState } from '../../state/gameReducer';
 import { getImages } from '../../api/unsplash';
 import { getImageID } from '../../utils/getImageID';
-import { MESSAGES } from '../../constants';
+import { MESSAGES, ACTION_TYPES } from '../../constants';
 
 import styles from './GameBoard.module.scss';
 
@@ -31,7 +31,7 @@ const {
 	SET_GAME_COMPLETE,
 	HANDLE_MATCH,
 	RESET,
-} = ActionTypes;
+} = ACTION_TYPES;
 
 const placeholderTiles = Array(TILE_COUNT)
 	.fill(0)

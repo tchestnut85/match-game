@@ -1,7 +1,7 @@
 import Button from '../Button/Button';
 
 import { useGameContext } from '../../state/gameContext';
-import { ActionTypes } from '../../state/gameReducer';
+import { ACTION_TYPES } from '../../constants';
 
 import styles from './Navbar.module.scss';
 
@@ -13,7 +13,7 @@ const Navbar = () => {
 
 	const BUTTONS = [{ label: 'Reset', isDisabled: !isGameActive }];
 
-	const handleReset = () => dispatch({ type: ActionTypes.RESET });
+	const handleReset = () => dispatch({ type: ACTION_TYPES.RESET });
 
 	return (
 		<nav className={styles.container}>
