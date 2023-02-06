@@ -12,4 +12,5 @@ export default defineConfig({
 		open: true,
 		// port: 3000, // can change this to any port if needed
 	},
+	base: '/match-game/',
 });
