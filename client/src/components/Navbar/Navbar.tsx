@@ -1,28 +1,36 @@
-import Button from '../Button/Button';
+import NavbarButton from './NavbarButton';
 
 import { useGameContext } from '../../state/gameContext';
-import { ACTION_TYPES } from '../../constants';
+import { ACTION_TYPES, NAV_BUTTONS } from '../../constants';
 
 import styles from './Navbar.module.scss';
 
-// TODO - add react-router and logic for saving scores to local storage
+const { RESET } = NAV_BUTTONS;
 
 const Navbar = () => {
 	const gameContext = useGameContext();
 	const [{ isGameActive }, dispatch] = gameContext!;
 
-	const BUTTONS = [{ label: 'Reset', isDisabled: !isGameActive }];
-
 	const handleReset = () => dispatch({ type: ACTION_TYPES.RESET });
+
+	const buttonsConfig = Object.keys(NAV_BUTTONS).map(buttonName => {
+		const { label, route } = NAV_BUTTONS[buttonName];
+		const isResetButton = label === RESET.label;
+		return {
+			label,
+			route,
+			isDisabled: isResetButton ? !isGameActive : false,
+			onClick: isResetButton ? handleReset : undefined,
+		};
+	});
 
 	return (
 		<nav className={styles.container}>
-			{BUTTONS.map(({ label, isDisabled }) => (
-				<Button
-					key={label}
-					label={label}
-					disabled={isDisabled}
-					onClick={handleReset}
+			{buttonsConfig.map(button => (
+				<NavbarButton
+					key={button.label}
+					button={button}
+					isRoute={!!button.route}
 				/>
 			))}
 		</nav>

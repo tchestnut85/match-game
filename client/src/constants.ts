@@ -1,4 +1,4 @@
-import { ActionTypes } from './types/actionTypes';
+import { INavButtons } from './types/index';
 
 export const APP_NAME = 'Match Game';
 
@@ -56,4 +56,15 @@ export const ACTION_TYPES = {
 	SET_GAME_COMPLETE: 'SET_GAME_COMPLETE',
 	HANDLE_MATCH: 'HANDLE_MATCH',
 	RESET: 'RESET',
+};
+
+export const ROUTES = {
+	home: '/',
+	scores: 'scores',
+};
+
+export const NAV_BUTTONS: INavButtons = {
+	HOME: { label: 'Home', route: ROUTES.home },
+	SCORES: { label: 'Scores', route: ROUTES.scores },
+	RESET: { label: 'Reset' },
 };

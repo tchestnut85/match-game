@@ -1,5 +1,8 @@
+import { Outlet } from 'react-router-dom';
+
 import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
 import { GameProvider } from './state/gameContext';
 
@@ -9,7 +12,8 @@ function App() {
 	return (
 		<GameProvider>
 			<div className={styles.app}>
-				<Home />
+				<Header />
+				<Outlet />
 				<Footer />
 			</div>
 		</GameProvider>

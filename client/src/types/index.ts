@@ -16,4 +16,18 @@ interface IGameState {
 	isGameComplete: boolean;
 }
 
-export type { IImage, IGameState, ActionTypes, IGameAction, ProviderValue };
+interface INavButtons {
+	[key: string]: {
+		label: string;
+		route?: string;
+	};
+}
+
+export type {
+	IImage,
+	IGameState,
+	ActionTypes,
+	IGameAction,
+	ProviderValue,
+	INavButtons,
+};

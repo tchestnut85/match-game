@@ -1,4 +1,3 @@
-import Header from '../../components/Header/Header';
 import GameBoard from '../../components/GameBoard/GameBoard';
 import Controls from '../../components/Controls/Controls';
 
@@ -13,7 +12,6 @@ function Home() {
 
 	return (
 		<main className={styles.container}>
-			<Header />
 			{!isGameActive ? <Controls /> : <GameBoard />}
 		</main>
 	);
