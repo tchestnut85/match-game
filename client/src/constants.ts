@@ -28,6 +28,11 @@ export const MESSAGES = {
 		text: 'Get your game started!',
 		submit: 'START!',
 	},
+	notFound: {
+		heading: "Sorry, the page you're looking for doesn't exist!",
+		error: 'Error:',
+		redirect: 'Navigating back home...',
+	},
 };
 
 export const LINKS = {

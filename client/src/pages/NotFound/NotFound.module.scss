@@ -1,0 +1,10 @@
+@import '../../sass/index';
+@import '../../sass/mixins';
+
+.container {
+	composes: container from '../Home/Home.module.scss';
+}
+
+.scores {
+	composes: container from '../../Components/Controls/Controls.module.scss';
+}

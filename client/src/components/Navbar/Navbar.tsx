@@ -7,13 +7,15 @@ import styles from './Navbar.module.scss';
 
 const { RESET } = NAV_BUTTONS;
 
+const BUTTONS = Object.keys(NAV_BUTTONS);
+
 const Navbar = () => {
 	const gameContext = useGameContext();
 	const [{ isGameActive }, dispatch] = gameContext!;
 
 	const handleReset = () => dispatch({ type: ACTION_TYPES.RESET });
 
-	const buttonsConfig = Object.keys(NAV_BUTTONS).map(buttonName => {
+	const buttonsConfig = BUTTONS.map(buttonName => {
 		const { label, route } = NAV_BUTTONS[buttonName];
 		const isResetButton = label === RESET.label;
 		return {

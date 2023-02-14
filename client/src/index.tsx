@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
-import Scores from './pages/Scores/Scores';
 import Home from './pages/Home/Home';
+import Scores from './pages/Scores/Scores';
+import NotFound from './pages/NotFound/NotFound';
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
@@ -24,7 +25,7 @@ const routes = [
 				element: <Scores />,
 			},
 		],
-		errorElement: '', // TODO - add a Not Found page using useRouteError or a redirect
+		errorElement: <NotFound />,
 	},
 ];
 
