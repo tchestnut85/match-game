@@ -73,3 +73,9 @@ export const NAV_BUTTONS: INavButtons = {
 	SCORES: { label: 'Scores', route: ROUTES.scores },
 	RESET: { label: 'Reset' },
 };
+
+export const SCORES_HEADINGS = {
+	name: 'Name',
+	scores: 'Scores',
+	total: 'Total',
+};
