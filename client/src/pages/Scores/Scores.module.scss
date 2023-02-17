@@ -28,11 +28,46 @@
 	composes: flex-column;
 
 	width: 65vw;
+	max-width: 600px;
 	min-height: 30vh;
+	padding-top: 2vh;
+
+	> :first-child {
+		padding-bottom: 2vh;
+	}
 }
 
 .row {
 	display: flex;
 	justify-content: space-evenly;
+	align-items: center;
+	height: 35px;
 	width: 100%;
+	border-bottom: $border-default;
+
+	&:first-child {
+		font-size: 1.25rem;
+	}
+
+	&:last-child {
+		border: none;
+	}
+
+	> p {
+		text-align: left;
+	}
+
+	> .name {
+		flex: 1;
+		padding-left: 1vw;
+	}
+
+	> .scores {
+		flex: 2;
+	}
+
+	> .total {
+		flex: 0.5;
+		padding-right: 1vw;
+	}
 }

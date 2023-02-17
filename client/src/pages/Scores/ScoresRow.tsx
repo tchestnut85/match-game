@@ -13,9 +13,9 @@ const ScoresRow = ({ data }: ScoresRowProps) => {
 
 	return (
 		<div className={styles.row}>
-			<p>{name}</p>
-			<p>{scores}</p>
-			<p>{total}</p>
+			<p className={styles.name}>{name}</p>
+			<p className={styles.scores}>{scores}</p>
+			<p className={styles.total}>{total}</p>
 		</div>
 	);
 };
