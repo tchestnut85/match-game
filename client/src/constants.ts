@@ -79,3 +79,5 @@ export const SCORES_HEADINGS = {
 	scores: 'Scores',
 	total: 'Total',
 };
+
+export const STORAGE_ID = 'match_game_tchestnut.dev:';

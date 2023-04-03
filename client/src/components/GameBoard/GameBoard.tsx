@@ -9,8 +9,11 @@ import { initialState } from '../../state/gameReducer';
 import { getImages } from '../../api/unsplash';
 import { getImageID } from '../../utils/getImageID';
 import { MESSAGES, ACTION_TYPES } from '../../constants';
+import LocalStorage from '../../utils/localStorage';
 
 import styles from './GameBoard.module.scss';
+
+const localStorage = LocalStorage.getLocalStorage();
 
 // TODO - get tile count from user input
 const TILE_COUNT = 12;
@@ -53,6 +56,8 @@ const GameBoard = () => {
 	const checkIsMatched = (id: string) => matchedIds.includes(id);
 
 	const checkIsGameComplete = () => {
+		// TODO - implement logic for tracking player name and score and use those values when game is complete
+		localStorage.saveScore({ name: 'Tom', score: 500 });
 		dispatch({ type: SET_GAME_COMPLETE, payload: true });
 	};
 
