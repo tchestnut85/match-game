@@ -10,10 +10,6 @@ import { ControlsInputs } from '../../types';
 
 import styles from './Controls.module.scss';
 
-// TODO - use react hook form to get form values and then dispatch to the context state
-// - set a starting score (like 100) track score when the game starts
-// - render player name and the current score to the gameboard and have it rerender when score changes
-
 const initialFormValues = { category: '', name: '' };
 const validationConfig = {
 	category: { required: true },

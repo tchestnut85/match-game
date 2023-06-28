@@ -9,8 +9,9 @@ const {
 	SET_SELECTED_TILES,
 	SET_GAME_COMPLETE,
 	HANDLE_MATCH,
-	SET_SCORE,
 	RESET,
+	INCREMENT_SCORE,
+	DECREMENT_SCORE,
 } = ACTION_TYPES;
 
 const initialState: IGameState = {
@@ -46,13 +47,15 @@ function reducer(
 			return { ...state, selectedTiles: action.payload };
 		case SET_GAME_COMPLETE:
 			return { ...state, isGameComplete: action.payload };
-		case SET_SCORE:
+		case INCREMENT_SCORE:
 			return {
 				...state,
-				score:
-					state.score > 0
-						? state.score - (action.payload || SCORE_DEDUCTION_DEFAULT)
-						: state.score,
+				score: state.score + (action.payload || SCORE_DEDUCTION_DEFAULT),
+			};
+		case DECREMENT_SCORE:
+			return {
+				...state,
+				score: state.score - (action.payload || SCORE_DEDUCTION_DEFAULT),
 			};
 		case HANDLE_MATCH:
 			return {

@@ -44,6 +44,8 @@ const {
 	SET_GAME_COMPLETE,
 	HANDLE_MATCH,
 	RESET,
+	DECREMENT_SCORE,
+	INCREMENT_SCORE,
 } = ACTION_TYPES;
 
 const placeholderTiles = Array(TILE_COUNT)
@@ -84,7 +86,7 @@ const GameBoard = () => {
 	};
 
 	const handleDidNotMatch = () => {
-		// dispatch the reduce score action
+		dispatch({ type: DECREMENT_SCORE });
 		setTimeout(() => {
 			dispatch({
 				type: SET_SELECTED_TILES,
@@ -94,6 +96,7 @@ const GameBoard = () => {
 	};
 
 	const handleDidMatch = ([tileA, tileB]: string[]) => {
+		dispatch({ type: INCREMENT_SCORE });
 		dispatch({
 			type: HANDLE_MATCH,
 			payload: {
