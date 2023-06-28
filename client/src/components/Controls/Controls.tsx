@@ -1,44 +1,93 @@
 import { useState, ChangeEvent, MouseEvent } from 'react';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
 import Button from '../Button/Button';
 import ImageSelect from '../ImageSelect/ImageSelect';
 
 import { useGameContext } from '../../state/gameContext';
-import { MESSAGES, ACTION_TYPES } from '../../constants';
+import { MESSAGES, ACTION_TYPES, FORM_CONFIG } from '../../constants';
+import { ControlsInputs } from '../../types';
 
 import styles from './Controls.module.scss';
 
 // TODO - use react hook form to get form values and then dispatch to the context state
+// - set a starting score (like 100) track score when the game starts
+// - render player name and the current score to the gameboard and have it rerender when score changes
+
+const initialFormValues = { category: '', name: '' };
+const validationConfig = {
+	category: { required: true },
+	name: { required: true, maxLength: 30 },
+	errors: {
+		category: 'Category is required.',
+		name: 'Name is required and can be 30 characters max.',
+	},
+};
 
 const Controls = () => {
-	const [formState, setFormState] = useState({ category: '' });
+	const {
+		register,
+		handleSubmit: rhfHandleSubmit,
+		watch,
+		formState: { errors, isDirty, isValid },
+	} = useForm({
+		defaultValues: initialFormValues,
+		mode: 'onChange',
+		reValidateMode: 'onChange',
+	});
 	const gameContext = useGameContext();
 	const [, dispatch] = gameContext!;
 
-	const { category } = formState;
+	const isDisabled = !isDirty || !isValid || !!Object.keys(errors).length;
 
-	const isDisabled = Object.values(formState).some(val => !val);
+	console.log('name:', watch('name'));
+	console.log('category:', watch('category'));
+	console.log({ errors, isDirty, isValid });
 
-	const handleFormChange = (event: ChangeEvent<HTMLSelectElement>) => {
-		const { value } = event.target as HTMLSelectElement;
-		setFormState({ category: value });
-	};
-
-	const handleSubmit = (event: MouseEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		dispatch({ type: ACTION_TYPES.START_GAME, payload: category });
+	const handleSubmit: SubmitHandler<ControlsInputs> = data => {
+		console.log('data:', data);
+		dispatch({
+			type: ACTION_TYPES.START_GAME,
+			payload: { category: data.category, playerName: data.name },
+		});
 	};
 
 	return (
 		<section className={styles.container}>
 			<h2>{MESSAGES.controls.text}</h2>
-			<form className={styles.form} onSubmit={handleSubmit}>
-				<ImageSelect onChange={handleFormChange} />
+			<form className={styles.form} onSubmit={rhfHandleSubmit(handleSubmit)}>
+				<div className={styles.inputContainer}>
+					<div className={styles.input}>
+						<label htmlFor={FORM_CONFIG.name.id}>
+							{FORM_CONFIG.name.label}
+						</label>
+						<input
+							className={styles.name}
+							{...register('name', validationConfig.name)}
+						/>
+					</div>
+					{errors.name && (
+						<p className={styles.error}>{validationConfig.errors.name}</p>
+					)}
+				</div>
+
+				<div className={styles.inputContainer}>
+					<div className={styles.input}>
+						<ImageSelect
+							label={FORM_CONFIG.category.label}
+							{...register('category', validationConfig.category)}
+						/>
+					</div>
+					{errors.category && (
+						<p className={styles.error}>{validationConfig.errors.category}</p>
+					)}
+				</div>
+
 				<Button
-					label={MESSAGES.controls.submit}
+					label={FORM_CONFIG.submit.label}
 					type="submit"
-					disabled={isDisabled}
 					className={styles.button}
+					disabled={isDisabled}
 				/>
 			</form>
 		</section>

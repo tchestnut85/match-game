@@ -20,6 +20,11 @@
 	margin: 10px 0;
 }
 
+.playerHeading {
+	font-size: 1.25rem;
+	padding-block-end: 10px;
+}
+
 @media screen and (max-width: $tablet-query-width) {
 	.tiles {
 		grid-template-columns: repeat(auto-fit, $tablet-width-value);

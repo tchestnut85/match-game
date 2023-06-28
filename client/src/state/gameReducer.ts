@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 
 import { IGameState, IGameAction } from '../types';
-import { ACTION_TYPES } from '../constants';
+import { ACTION_TYPES, SCORE_DEDUCTION_DEFAULT } from '../constants';
 
 const {
 	START_GAME,
@@ -9,6 +9,7 @@ const {
 	SET_SELECTED_TILES,
 	SET_GAME_COMPLETE,
 	HANDLE_MATCH,
+	SET_SCORE,
 	RESET,
 } = ACTION_TYPES;
 
@@ -19,6 +20,8 @@ const initialState: IGameState = {
 	selectedTiles: [],
 	matchedIds: [],
 	isGameComplete: false,
+	playerName: '',
+	score: 100,
 };
 
 function initialize(state = initialState) {
@@ -31,13 +34,26 @@ function reducer(
 ): IGameState {
 	switch (action.type) {
 		case START_GAME:
-			return { ...state, isGameActive: true, category: action.payload };
+			return {
+				...state,
+				isGameActive: true,
+				category: action.payload.category,
+				playerName: action.payload.playerName,
+			};
 		case SET_IMAGES:
 			return { ...state, images: action.payload };
 		case SET_SELECTED_TILES:
 			return { ...state, selectedTiles: action.payload };
 		case SET_GAME_COMPLETE:
 			return { ...state, isGameComplete: action.payload };
+		case SET_SCORE:
+			return {
+				...state,
+				score:
+					state.score > 0
+						? state.score - (action.payload || SCORE_DEDUCTION_DEFAULT)
+						: state.score,
+			};
 		case HANDLE_MATCH:
 			return {
 				...state,

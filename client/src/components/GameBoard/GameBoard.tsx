@@ -13,7 +13,17 @@ import LocalStorage from '../../utils/localStorage';
 
 import styles from './GameBoard.module.scss';
 
-const localStorage = LocalStorage.getLocalStorage();
+const localStorage = LocalStorage.getInstance();
+
+/*
+- add a game score state
+- add a player name input on the get started card
+- set a starting score (like 100) track score when the game starts
+- render player name and the current score to the gameboard and have it rerender when score changes
+- subtract points from score for each wrong choice
+- set the score higher for different difficulties / higher amount of images
+- when game is complete, save the score in local storage
+*/
 
 // TODO - get tile count from user input
 const TILE_COUNT = 12;
@@ -49,6 +59,8 @@ const GameBoard = () => {
 			matchedIds,
 			isGameActive,
 			isGameComplete,
+			playerName,
+			score,
 		},
 		dispatch,
 	] = useGameContext()!;
@@ -57,7 +69,7 @@ const GameBoard = () => {
 
 	const checkIsGameComplete = () => {
 		// TODO - implement logic for tracking player name and score and use those values when game is complete
-		localStorage.saveScore({ name: 'Tom', score: 500 });
+		localStorage.save({ name: 'Tom', score: 500 });
 		dispatch({ type: SET_GAME_COMPLETE, payload: true });
 	};
 
@@ -72,6 +84,7 @@ const GameBoard = () => {
 	};
 
 	const handleDidNotMatch = () => {
+		// dispatch the reduce score action
 		setTimeout(() => {
 			dispatch({
 				type: SET_SELECTED_TILES,
@@ -149,19 +162,24 @@ const GameBoard = () => {
 	};
 
 	return (
-		<section className={styles.container}>
-			<div className={styles.tiles}>
-				{isGameComplete && (
-					<Modal
-						isOpen={isGameComplete}
-						buttons={MODAL_BUTTONS}
-						messages={MODAL_MESSAGES}
-						onClose={{ confirm: handleRestartGame, cancel: handleCloseModal }}
-					/>
-				)}
-				{renderTiles()}
-			</div>
-		</section>
+		<>
+			<h2 className={styles.playerHeading}>
+				{playerName} | Category: {category} | Score: {score}
+			</h2>
+			<section className={styles.container}>
+				<div className={styles.tiles}>
+					{isGameComplete && (
+						<Modal
+							isOpen={isGameComplete}
+							buttons={MODAL_BUTTONS}
+							messages={MODAL_MESSAGES}
+							onClose={{ confirm: handleRestartGame, cancel: handleCloseModal }}
+						/>
+					)}
+					{renderTiles()}
+				</div>
+			</section>
+		</>
 	);
 };
 

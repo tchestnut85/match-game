@@ -14,6 +14,8 @@ interface IGameState {
 	selectedTiles: string[];
 	matchedIds: string[];
 	isGameComplete: boolean;
+	playerName: string;
+	score: number;
 }
 
 interface INavButtons {
@@ -23,6 +25,11 @@ interface INavButtons {
 	};
 }
 
+type ControlsInputs = {
+	category: string;
+	name: string;
+};
+
 export type {
 	IImage,
 	IGameState,
@@ -30,4 +37,5 @@ export type {
 	IGameAction,
 	ProviderValue,
 	INavButtons,
+	ControlsInputs,
 };

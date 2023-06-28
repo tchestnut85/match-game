@@ -16,22 +16,34 @@ export const MESSAGES = {
 			no: 'Nope!',
 		},
 	},
-	imageSelect: {
-		label: 'Choose Category:',
-		optionPlaceholder: 'Choose Category...',
-	},
 	unsplashCredits: {
 		text: 'Images provided by ',
 		unsplash: 'Unsplash',
 	},
 	controls: {
 		text: 'Get your game started!',
-		submit: 'START!',
 	},
 	notFound: {
 		heading: "Sorry, the page you're looking for doesn't exist!",
 		error: 'Error:',
 		redirect: 'Navigating back home...',
+	},
+};
+
+export const FORM_CONFIG = {
+	category: {
+		id: 'category',
+		label: 'Choose Category:',
+		placeholder: 'Choose Category...',
+	},
+	name: {
+		id: 'name',
+		label: 'Your Name:',
+		placeholder: '',
+	},
+	submit: {
+		id: 'submit',
+		label: 'START!',
 	},
 };
 
@@ -47,11 +59,13 @@ export const CATEGORY_OPTIONS = [
 	'Nature',
 	'Running',
 	'Video Games',
+	'Coffee',
 	'Foosball',
 	'Space',
 	'Moon',
 	'Computer',
 	'JavaScript',
+	'Cheese',
 ];
 
 export const ACTION_TYPES = {
@@ -60,6 +74,7 @@ export const ACTION_TYPES = {
 	SET_SELECTED_TILES: 'SET_SELECTED_TILES',
 	SET_GAME_COMPLETE: 'SET_GAME_COMPLETE',
 	HANDLE_MATCH: 'HANDLE_MATCH',
+	SET_SCORE: 'SET_SCORE',
 	RESET: 'RESET',
 };
 
@@ -79,5 +94,7 @@ export const SCORES_HEADINGS = {
 	scores: 'Scores',
 	total: 'Total',
 };
+
+export const SCORE_DEDUCTION_DEFAULT = 10;
 
 export const STORAGE_ID = 'match_game_tchestnut.dev:';
