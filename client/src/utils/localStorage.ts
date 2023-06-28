@@ -24,7 +24,7 @@ class LocalStorage {
 		localStorage.setItem(storageKey, JSON.stringify(scores));
 	}
 
-	saveScore({ name, score }: CheckStorage) {
+	save({ name, score }: CheckStorage) {
 		const storageKey = `${STORAGE_ID}${name.toLowerCase()}`;
 		const savedScores: ScoresArray = this.get(storageKey);
 
@@ -34,11 +34,11 @@ class LocalStorage {
 		});
 	}
 
-	getScores(storageKey: string) {
-		return this.get(storageKey);
+	getScores(storageKey: string): string {
+		return this.get(storageKey).scores.join(', ');
 	}
 
-	public static getLocalStorage() {
+	public static getInstance() {
 		if (!LocalStorage.instance) {
 			LocalStorage.instance = new LocalStorage();
 		}
