@@ -10,32 +10,37 @@ type CheckStorage = {
 	score: number;
 };
 
-type ScoresArray = number[];
+type ScoresArray = SetStorage[];
 
 class LocalStorage {
 	private static instance: LocalStorage;
 
-	private get(storageKey: string) {
-		return JSON.parse(localStorage.getItem(storageKey)!) || [];
+	private get() {
+		return JSON.parse(localStorage.getItem(STORAGE_ID)!) || [];
 	}
 
-	private set({ name, scores }: SetStorage) {
-		const storageKey = `${STORAGE_ID}${name.toLowerCase()}`;
+	private set(scores: ScoresArray) {
+		const storageKey = STORAGE_ID;
 		localStorage.setItem(storageKey, JSON.stringify(scores));
 	}
 
 	save({ name, score }: CheckStorage) {
-		const storageKey = `${STORAGE_ID}${name.toLowerCase()}`;
-		const savedScores: ScoresArray = this.get(storageKey);
-
-		this.set({
-			name,
-			scores: !!savedScores.length ? [...savedScores, score] : [score],
+		const savedScores: ScoresArray = this.get();
+		const playerScoreToUpdate = savedScores.find(savedScore => {
+			return savedScore.name.toLowerCase() === name.toLowerCase();
 		});
+
+		if (playerScoreToUpdate) {
+			playerScoreToUpdate.scores.push(score);
+		} else {
+			savedScores.push({ name, scores: [score] });
+		}
+
+		this.set(savedScores);
 	}
 
-	getScores(storageKey: string): string {
-		return this.get(storageKey).scores.join(', ');
+	getScores(): ScoresArray {
+		return this.get();
 	}
 
 	public static getInstance() {

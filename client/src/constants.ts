@@ -21,7 +21,7 @@ export const MESSAGES = {
 		unsplash: 'Unsplash',
 	},
 	controls: {
-		text: 'Get your game started!',
+		text: 'Start matching!',
 	},
 	notFound: {
 		heading: "Sorry, the page you're looking for doesn't exist!",
@@ -98,4 +98,4 @@ export const SCORES_HEADINGS = {
 
 export const SCORE_DEDUCTION_DEFAULT = 10;
 
-export const STORAGE_ID = 'match_game_tchestnut.dev:';
+export const STORAGE_ID = 'match_game_tchestnut:';

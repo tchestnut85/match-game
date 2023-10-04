@@ -2,6 +2,6 @@
 - [x] add context or redux to allow resetting the game state when clicking the Reset button in the Navbar
 - [ ] add a confirmation modal when clicking the navbar reset button before resetting
 - [ ] add score or # of attempts to the modal when finishing a game
-- [ ] add logic/util for saving name and scores to local storage
-- [ ] add react-router for viewing saved scores
+- [x] add logic/util for saving name and scores to local storage
+- [x] add react-router for viewing saved scores
 - [x] add dropdown for selection of image categories

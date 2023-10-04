@@ -9,7 +9,7 @@ import { initialState } from '../../state/gameReducer';
 import { getImages } from '../../api/unsplash';
 import { getImageID } from '../../utils/getImageID';
 import { MESSAGES, ACTION_TYPES } from '../../constants';
-import LocalStorage from '../../utils/localStorage';
+import LocalStorage from '../../utils/LocalStorage';
 
 import styles from './GameBoard.module.scss';
 
@@ -70,8 +70,7 @@ const GameBoard = () => {
 	const checkIsMatched = (id: string) => matchedIds.includes(id);
 
 	const checkIsGameComplete = () => {
-		// TODO - implement logic for tracking player name and score and use those values when game is complete
-		localStorage.save({ name: 'Tom', score: 500 });
+		localStorage.save({ name: playerName, score });
 		dispatch({ type: SET_GAME_COMPLETE, payload: true });
 	};
 
