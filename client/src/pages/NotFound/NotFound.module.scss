@@ -2,9 +2,30 @@
 @import '../../sass/mixins.scss';
 
 .container {
-	composes: container from '../Home/Home.module.scss';
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100%;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2vh;
+	text-align: center;
 }
 
 .scores {
-	composes: container from '../../Components/Controls/Controls.module.scss';
+	@include app-width;
+	@include border-default(none);
+
+	composes: flex-column;
+
+	justify-content: space-around;
+	gap: 1vh;
+	min-height: 200px;
+	background: $color-quaternary;
+	padding: 25px 0;
 }
