@@ -4,6 +4,7 @@
 	"description": "A simple picture matching game created with React and TypeScript. Uses the Unsplash API for images.",
 	"main": "/client/src/index.js",
 	"scripts": {
+		"install": "npm install && cd client && npm install",
 		"start": "cd client && npm start",
 		"format": "npx prettier --write client/src && npx eslint client/src",
 		"test": "cd client && npm run test"
