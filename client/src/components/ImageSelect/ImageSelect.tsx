@@ -4,8 +4,6 @@ import { CATEGORY_OPTIONS, FORM_CONFIG } from '../../constants';
 
 import styles from './ImageSelect.module.scss';
 
-const IMAGE_SELECT_NAME = 'category';
-
 type ImageSelectProps = {
 	onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 	onBlur: (event: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -14,7 +12,10 @@ type ImageSelectProps = {
 };
 
 const ImageSelect = React.forwardRef(
-	({ onChange, onBlur, name, label }: ImageSelectProps, ref) => {
+	(
+		{ onChange, onBlur, name, label }: ImageSelectProps,
+		ref: React.LegacyRef<HTMLSelectElement>
+	) => {
 		return (
 			<div className={styles.container}>
 				<label htmlFor={FORM_CONFIG.category.id}>{label}</label>
