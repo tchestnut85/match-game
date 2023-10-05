@@ -36,12 +36,7 @@ const Controls = () => {
 
 	const isDisabled = !isDirty || !isValid || !!Object.keys(errors).length;
 
-	console.log('name:', watch('name'));
-	console.log('category:', watch('category'));
-	console.log({ errors, isDirty, isValid });
-
 	const handleSubmit: SubmitHandler<ControlsInputs> = data => {
-		console.log('data:', data);
 		dispatch({
 			type: ACTION_TYPES.START_GAME,
 			payload: { category: data.category, playerName: data.name },

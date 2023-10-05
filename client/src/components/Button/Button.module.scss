@@ -1,5 +1,5 @@
-@import '../../sass/index';
-@import '../../sass/mixins';
+@import '../../sass/index.scss';
+@import '../../sass/mixins.scss';
 
 .button {
 	@include border-default(none);
@@ -10,12 +10,12 @@
 	font-weight: 700;
 	background: $color-primary;
 	color: $color-tertiary;
+}
 
-	&:hover {
-		cursor: pointer;
-		background-color: $color-tertiary;
-		color: $color-primary;
-	}
+.button:hover {
+	cursor: pointer;
+	background-color: $color-tertiary;
+	color: $color-primary;
 }
 
 .disabled {

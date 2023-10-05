@@ -1,5 +1,5 @@
-@import '../../sass/index';
-@import '../../sass/mixins';
+@import '../../sass/index.scss';
+@import '../../sass/mixins.scss';
 
 .flex-column {
 	display: flex;
@@ -33,11 +33,11 @@
 
 	background: $color-secondary;
 	color: $color-tertiary;
+}
 
-	&:hover {
-		background: $color-tertiary;
-		color: $color-secondary;
-	}
+.button:hover {
+	background: $color-tertiary;
+	color: $color-secondary;
 }
 
 .inputContainer {

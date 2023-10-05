@@ -1,10 +1,8 @@
-@import '../../sass/index';
+@import '../../sass/index.scss';
 
 .container {
-	:first-child {
-		&:hover {
-			cursor: pointer;
-			color: $color-tertiary !important;
-		}
+	:first-child:hover {
+		cursor: pointer;
+		color: $color-tertiary !important;
 	}
 }

@@ -1,4 +1,4 @@
-@import '../../sass/index';
+@import '../../sass/index.scss';
 
 .container {
 	display: flex;
@@ -14,10 +14,10 @@
 
 .unsplashLink {
 	color: $color-primary;
+}
 
-	&:hover {
-		color: $color-tertiary;
-	}
+.unsplashLink:hover {
+	color: $color-tertiary;
 }
 
 @media screen and (max-width: $tablet-query-width) {
