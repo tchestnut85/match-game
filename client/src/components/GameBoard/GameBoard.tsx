@@ -9,7 +9,7 @@ import { initialState } from '../../state/gameReducer';
 import { getImages } from '../../api/unsplash';
 import { getImageID } from '../../utils/getImageID';
 import { MESSAGES, ACTION_TYPES } from '../../constants';
-import LocalStorage from '../../utils/LocalStorage';
+import LocalStorage from '../../utils/localStorage';
 
 import styles from './GameBoard.module.scss';
 

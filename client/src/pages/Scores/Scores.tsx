@@ -1,7 +1,7 @@
 import ScoresRow from './ScoresRow';
 
 import { SCORES_HEADINGS } from '../../constants';
-import LocalStorage from '../../utils/LocalStorage';
+import LocalStorage from '../../utils/localStorage';
 
 import styles from './Scores.module.scss';
 
